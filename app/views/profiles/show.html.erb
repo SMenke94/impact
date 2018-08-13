@@ -1,0 +1,20 @@
+<div class="container header-container">
+  <div class="card-user">
+    <%= cl_image_tag @user.profile_picture.url(:avatar) %>
+    <div class="card-user-info">
+      <h2><%= @user.first_name %> <%= @user.last_name %></h2>
+      <p>User</p>
+    </div>
+  </div>
+</div>
+
+<div class="container bio-container">
+  <h3>Bio</h3>
+  <p><%= @user.bio %></p>
+</div>
+
+<div class="container projects-container">
+  <% @user.projects.each do |project| %>
+  <p>This will be a card for <%= project.title %> </p>
+  <% end %>
+</div>
