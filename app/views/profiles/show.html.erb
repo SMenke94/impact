@@ -1,20 +1,75 @@
-<div class="container header-container">
-  <div class="card-user">
-    <%= cl_image_tag @user.profile_picture.url(:avatar) %>
-    <div class="card-user-info">
-      <h2><%= @user.first_name %> <%= @user.last_name %></h2>
-      <p>User</p>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-md-offset-3 col-md-6">
+      <div class="card-profile">
+        <%= cl_image_tag @user.profile_picture.url(:avatar), class:"avatar profile-picture" %>
+        <div class="card-profile-info">
+          <h2><%= @user.first_name %> <%= @user.last_name %></h2>
+        </div>
+      </div>
     </div>
   </div>
 </div>
 
-<div class="container bio-container">
-  <h3>Bio</h3>
-  <p><%= @user.bio %></p>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-md-offset-2 col-md-8">
+      <div class="profile-bio">
+        <h3>Bio</h3>
+        <% if @user.bio.nil? %>
+          <p>The user has not filled in a bio.</p>
+        <% else %>
+          <p><%= @user.bio %></p>
+        <% end %>
+      </div>
+    </div>
+  </div>
 </div>
 
-<div class="container projects-container">
-  <% @user.projects.each do |project| %>
-  <p>This will be a card for <%= project.title %> </p>
-  <% end %>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-md-offset-2 col-md-8">
+      <h3><%= @user.first_name %>'s Projects</h3>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-2"></div>
+      <% @user.projects.each do |project| %>
+        <div class="col-xs-12 col-md-4">
+          <%= render 'shared/project-card', project: project %>
+        </div>
+      <% end %>
+  </div>
 </div>
+
+<!-- Fix projects' cards being displayed on top of next title -->
+
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-md-offset-2 col-md-8">
+      <h3><%= @user.first_name %>'s Volunteering Experience</h3>
+      <% if @user.bookings.empty? %>
+        <p>The user has not booked a volunteering experience yet.</p>
+      <% end %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-2"></div>
+      <% @user.bookings.each do |booking| %>
+        <div class="col-xs-12 col-md-4">
+          <p>A future booking</p>
+        </div>
+      <% end %>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
