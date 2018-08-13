@@ -1,3 +1,6 @@
+User.destroy_all
+Project.destroy_all
+
 url_user1 = "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=5d43ec18ec2cf6ff854513b9e8395c1e&auto=format&fit=crop&w=1650&q=80"
 url_user2 = "https://images.unsplash.com/photo-1477118476589-bff2c5c4cfbb?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=ad57f7ca5832f3f72ee2c1c243c72f5c&auto=format&fit=crop&w=1650&q=80"
 
@@ -29,7 +32,7 @@ forest_project = Project.new(
   location: "Amazon",
   category: "Environment",
   capacity: 4,
-  user_id: 1
+  user: user1
   )
 forest_project.remote_photo_url = url_forest
 forest_project.save
@@ -40,7 +43,7 @@ kids_project = Project.new(
   location: "Nepal",
   category: "Education",
   capacity: 2,
-  user_id: 2
+  user: user2
   )
 kids_project.remote_photo_url = url_kids
 kids_project.save
@@ -51,7 +54,7 @@ animal_project = Project.new(
   location: "Africa",
   category: "Animals",
   capacity: 4,
-  user_id: 2
+  user: user2
   )
 animal_project.remote_photo_url = url_animal
 animal_project.save
