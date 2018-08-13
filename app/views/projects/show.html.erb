@@ -1,0 +1,11 @@
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.5)), url(<%= @project.photo %>);">
+  <div class="banner-content">
+    <h1><%= @project.title %></h1>
+  </div>
+</div>
+<div class="container">
+  <h3><%= @project.description %></h3>
+  <h4><%= @project.location %></h4>
+  <p><strong>Number of volunteers needed:</strong> <%= @project.capacity %></p>
+  <p><strong>Project category:</strong> <%= @project.category %></p>
+</div>
