@@ -9,3 +9,10 @@
   <p><strong>Number of volunteers needed:</strong> <%= @project.capacity %></p>
   <p><strong>Project category:</strong> <%= @project.category %></p>
 </div>
+<div class="container">
+  <%= simple_form_for [@project, @booking] do |f| %>
+    <%= f.input :start_date %>
+    <%= f.input :end_date %>
+    <%= f.submit "Make booking", class: "btn btn-primary" %>
+  <% end %>
+</div>
