@@ -2,7 +2,7 @@ class PhotoUploader < CarrierWave::Uploader::Base
   include Cloudinary::CarrierWave
 
   version :avatar do
-    cloudinary_transformation radius: 50, width: 100, height: 100, crop: :thumb, gravity: :face
+    cloudinary_transformation width: 100, height: 100, crop: :thumb, gravity: :face
   end
 
   version :project_photo do

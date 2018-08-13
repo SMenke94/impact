@@ -7,6 +7,9 @@
   position: relative;
   margin: 20px;
   border-radius: 2px;
+  &:hover {
+    opacity: 0.8;
+  }
 }
 .card-user {
   position: absolute;
@@ -42,7 +45,10 @@
   right: 0;
   width: 100%;
   z-index: 2;
-  &:hover {
-    opacity: 0.8;
-  }
+}
+
+.card-profile {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
