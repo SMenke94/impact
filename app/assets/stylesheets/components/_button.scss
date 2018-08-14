@@ -17,3 +17,16 @@
   }
 }
 
+.btn-home {
+  background-color: $green;
+  font-size: 20px;
+  border-radius: 5px;
+  color: white;
+  &:hover {
+    color: rgba(255,255,255,0.7);
+  }
+}
+
+.small {
+    font-size: 14px !important;
+  }
