@@ -1,6 +1,6 @@
-Category.destroy_all
-User.destroy_all
 Project.destroy_all
+User.destroy_all
+Category.destroy_all
 
 # CATEGORIES
 
