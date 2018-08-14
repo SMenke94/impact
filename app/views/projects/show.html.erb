@@ -11,6 +11,15 @@
 </div>
 <div class="container">
   <%= simple_form_for [@project, @booking] do |f| %>
+    <% if @booking.errors.any? %>
+      <div class="error_explanation">
+        <ul>
+        <% @booking.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
     <%= f.input :start_date %>
     <%= f.input :end_date %>
     <%= f.submit "Make booking", class: "btn btn-primary" %>

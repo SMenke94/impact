@@ -8,4 +8,10 @@ class Project < ApplicationRecord
   validates :location, presence: true
   validates :category, presence: true
   validates :capacity, presence: true
+
+  def capacity_on_date(date)
+    capacity - bookings.select do |booking|
+      booking.all_dates.include? date
+    end.count
+  end
 end
