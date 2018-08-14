@@ -1,75 +1,61 @@
-<div class="container">
+<div class="container profile-page">
   <div class="row">
-    <div class="col-xs-12 col-md-offset-3 col-md-6">
-      <div class="card-profile">
+    <!-- Left side of profile page -->
+
+    <div class="col-xs-12 col-md-3">
+
+      <div class="profile-picture">
         <%= cl_image_tag @user.profile_picture.url(:avatar), class:"avatar profile-picture" %>
-        <div class="card-profile-info">
-          <h2><%= @user.first_name %> <%= @user.last_name %></h2>
-        </div>
       </div>
-    </div>
-  </div>
-</div>
 
-<div class="container">
-  <div class="row">
-    <div class="col-xs-12 col-md-offset-2 col-md-8">
-      <div class="profile-bio">
-        <h3>Bio</h3>
-        <% if @user.bio.nil? %>
-          <p>The user has not filled in a bio.</p>
-        <% else %>
-          <p><%= @user.bio %></p>
-        <% end %>
+      <% if current_user == @user %>
+        <div class="profile-edit">
+          <%= link_to "Edit Profile", profile_path(@user) %>
+        </div>
+      <% end %>
+
+      <div class="profile-details">
+        <h4>Web Developer</h4>
+        <h4>Copenhagen, Denmark</h4>
       </div>
-    </div>
-  </div>
-</div>
+      <div class="profile-skills">
+        <p><strong>Languages:</strong> English, French</p>
+        <p><strong>Other:</strong> some cool skill</p>
+      </div>
 
-<div class="container">
-  <div class="row">
-    <div class="col-xs-12 col-md-offset-2 col-md-8">
-      <h3><%= @user.first_name %>'s Projects</h3>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-2"></div>
-      <% @user.projects.each do |project| %>
-        <div class="col-xs-12 col-md-4">
-          <%= render 'shared/project-card', project: project %>
+      <div class="profile-projects">
+        <h3>Projects (<%= @user.projects.count %>)</h3>
+        <% if !@user.projects.empty? %>
+          <% @user.projects.each do |project| %>
+            <%= render 'shared/project-card', project: project %>
+          <% end %>
         </div>
       <% end %>
-  </div>
-</div>
 
-<!-- Fix projects' cards being displayed on top of next title -->
+    </div>
 
-<div class="container">
-  <div class="row">
-    <div class="col-xs-12 col-md-offset-2 col-md-8">
-      <h3><%= @user.first_name %>'s Volunteering Experience</h3>
-      <% if @user.bookings.empty? %>
-        <p>The user has not booked a volunteering experience yet.</p>
-      <% end %>
+    <div class="col-md-1"></div>
+
+    <!-- Right side of profile page -->
+    <div class="col-xs-12 col-md-6">
+
+      <div class="profile-info">
+        <h2>Hey, I'm <%= @user.first_name %> <%= @user.last_name %></h2>
+        <p><%= @user.bio %></p>
+        <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+      </div>
+
+      <!-- Add reviews to model and implement logic -->
+      <div class="profile-reviews">
+        <h3>Reviews (0)</h3>
+        <!-- @user.reviews.each do |review| render ... -->
+      </div>
+
+      <div class="profile-bookings">
+        <h3>Bookings (<%= @user.bookings.count %>)</h3>
+        <!-- @user.bookings.each do |booking| render ... -->
+      </div>
+
     </div>
   </div>
-  <div class="row">
-    <div class="col-md-2"></div>
-      <% @user.bookings.each do |booking| %>
-        <div class="col-xs-12 col-md-4">
-          <p>A future booking</p>
-        </div>
-      <% end %>
-  </div>
 </div>
-
-
-
-
-
-
-
-
-
-
-
