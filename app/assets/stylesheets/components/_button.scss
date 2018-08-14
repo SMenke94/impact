@@ -1,0 +1,9 @@
+.btn-book {
+  background-color: $green;
+  width: 100%;
+  border-radius: 5px;
+  color: white;
+  &:hover {
+    opacity: 0.9;
+  }
+}
