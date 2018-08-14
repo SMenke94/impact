@@ -8,9 +8,15 @@
         <%= cl_image_tag @user.profile_picture.url(:avatar), class:"avatar profile-picture" %>
       </div>
 
+      <% if current_user == @user %>
+        <div class="profile-edit">
+          <%= link_to "Edit Profile", profile_path(@user) %>
+        </div>
+      <% end %>
+
       <div class="profile-details">
-        <h5>Web Developer</h5>
-        <h5>Copenhagen, Denmark</h5>
+        <h4>Web Developer</h4>
+        <h4>Copenhagen, Denmark</h4>
       </div>
       <div class="profile-skills">
         <p><strong>Languages:</strong> English, French</p>
