@@ -20,8 +20,8 @@
         </ul>
       </div>
     <% end %>
-    <%= f.input :start_date %>
-    <%= f.input :end_date %>
+    <%= f.input :start_date, as: :string, input_html: { id: "start_date" } %>
+    <%= f.input :end_date, as: :string, input_html: { id: "end_date" } %>
     <%= f.submit "Make booking", class: "btn btn-primary" %>
   <% end %>
 </div>
