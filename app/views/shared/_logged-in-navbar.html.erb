@@ -8,7 +8,9 @@
   <div class="navbar-wagon-right hidden-xs hidden-sm">
 
     <%= link_to "Logout", destroy_user_session_path, method: :delete, class: "navbar-wagon-item navbar-wagon-link" %>
-    <%= cl_image_tag current_user.profile_picture.url(:avatar), class: "avatar" %>
+    <%= link_to profile_path(current_user) do %>
+      <%= cl_image_tag current_user.profile_picture.url(:avatar), class: "avatar" %>
+    <% end %>
 
   <!-- Dropdown appearing on mobile only -->
   <div class="navbar-wagon-item hidden-md hidden-lg">
