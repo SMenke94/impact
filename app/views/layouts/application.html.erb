@@ -10,13 +10,15 @@
   <%= stylesheet_pack_tag 'application' %>
 </head>
 <body>
-  <div>
-    <% if user_signed_in? %>
-    <%= render "shared/logged-in-navbar" %>
-    <% else %>
-    <%= render "shared/logged-out-navbar" %>
-    <% end %>
-  </div>
+  <% unless @no_navbar  %>
+    <div>
+      <% if user_signed_in? %>
+        <%= render "shared/logged-in-navbar" %>
+      <% else %>
+        <%= render "shared/logged-out-navbar" %>
+      <% end %>
+    </div>
+  <% end %>
   <%= render 'shared/flashes' %>
   <%= yield %>
   <%= javascript_include_tag 'application' %>
