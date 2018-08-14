@@ -1,0 +1,28 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-md-offset-3 col-md-6">
+      <h2>Create a New Project</h2>
+
+      <%= simple_form_for @project do |f| %>
+      <%= f.error_notification %>
+
+      <div class="form-inputs">
+        <%= f.input :title, required: true, autofocus: true %>
+        <%= f.input :description, required: true %>
+        <%= f.input :location, required: true %>
+        <%= f.association :category, required: true %>
+        <%= f.input :capacity, required: true %>
+        <%= f.input :photo, required: false %>
+        <%= f.input :photo_cache, as: :hidden %>
+      </div>
+
+      <div class="form-actions">
+        <%= f.button :submit, "Create Project" %>
+      </div>
+      <% end %>
+
+      <%= link_to "Back", :back %>
+
+    </div>
+  </div>
+</div>
