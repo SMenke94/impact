@@ -4,8 +4,11 @@ class BookingsController < ApplicationController
     @booking.user = current_user
     @project = Project.find(params[:project_id])
     @booking.project = @project
-    @booking.save
-    # figure out where to redirect to
+    if @booking.save
+      redirect_to projects_path
+    else
+      render 'projects/show'
+    end
   end
 
   def destroy
