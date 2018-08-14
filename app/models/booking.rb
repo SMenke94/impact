@@ -29,4 +29,15 @@ class Booking < ApplicationRecord
   def all_dates
     (start_date..end_date)
   end
+
+  def all_volunteers
+    participants = []
+    self.project.bookings.each do |booking|
+      if (booking.all_dates).overlaps?(self.all_dates)
+        participants << booking.user
+      end
+    end
+    return participants
+  end
+
 end

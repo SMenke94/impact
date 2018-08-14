@@ -4,7 +4,10 @@ Rails.application.routes.draw do
   resources :projects do
     resources :bookings, only: [ :create ]
   end
-  resources :profiles, only: [ :show ]
+  get 'profiles/projects', to: 'profiles#projects_dashboard'
+  get 'profiles/bookings', to: 'profiles#bookings_dashboard'
+  get 'profiles/:id', to: 'profiles#show', as: :profile
   resources :bookings, only: [ :destroy ]
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
+  # resources :bookings, only: [ :destroy ]
 end

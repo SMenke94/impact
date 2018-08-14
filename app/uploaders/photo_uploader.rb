@@ -1,6 +1,14 @@
 class PhotoUploader < CarrierWave::Uploader::Base
   include Cloudinary::CarrierWave
 
+  def default_url(*args)
+    if model.is_a? User
+      ActionController::Base.helpers.asset_path(["default_profile.jpeg"].compact.join("_"))
+    elsif model.is_a? Project
+      ActionController::Base.helpers.asset_path(["default_project.jpeg"].compact.join("_"))
+    end
+  end
+
   version :avatar do
     cloudinary_transformation width: 100, height: 100, crop: :thumb, gravity: :face
   end
