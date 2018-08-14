@@ -1,0 +1,17 @@
+<%= simple_form_for @project do |f| %>
+<%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :title, required: true, autofocus: true %>
+    <%= f.input :description, required: true %>
+    <%= f.input :location, required: true %>
+    <%= f.association :category, required: true %>
+    <%= f.input :capacity, required: true %>
+    <%= f.input :photo, required: false %>
+    <%= f.input :photo_cache, as: :hidden %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, "Create Project", class: "btn btn-book" %>
+  </div>
+<% end %>

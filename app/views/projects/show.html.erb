@@ -3,25 +3,56 @@
     <h1><%= @project.title %></h1>
   </div>
 </div>
-<div class="container">
-  <h3><%= @project.description %></h3>
-  <h4><%= @project.location %></h4>
-  <p><strong>Number of volunteers needed:</strong> <%= @project.capacity %></p>
-  <p><strong>Project category:</strong> <%= @project.category.name %></p>
-</div>
-<div class="container">
-  <%= simple_form_for [@project, @booking] do |f| %>
-    <% if @booking.errors.any? %>
+<div class="show-broken-grid">
+  <div class="description-container">
+    <h2><%= @project.description %></h2>
+    <h4><i class="fas fa-map-marker-alt"></i> <%= @project.location %></h4>
+  </div>
+  <div class="volunteers-container">
+    <div class="volunteers text-center">
+      <h3>Volunteers</h3>
+      <h1><i class="fas fa-user-alt"></i></h1>
+      <h4><%= @project.capacity %></h4>
+    </div>
+    <p><strong>Project category:</strong> <%= @project.category.name %></p>
+    <p><strong>Required skills:</strong></p>
+    <ul>
+      <li>English language</li>
+      <li>Experience working with children</li>
+    </ul>
+  </div>
+  <div class="booking-form-container">
+    <div class="form-body">
+      <h3>Book to volunteer</h3>
+      <%= simple_form_for [@project, @booking] do |f| %>
+      <% if @booking.errors.any? %>
       <div class="error_explanation">
         <ul>
-        <% @booking.errors.full_messages.each do |msg| %>
+          <% @booking.errors.full_messages.each do |msg| %>
           <li><%= msg %></li>
-        <% end %>
+          <% end %>
         </ul>
       </div>
+      <% end %>
+      <%= f.input :start_date, as: :string, input_html: { id: "start_date" } %>
+      <%= f.input :end_date, as: :string, input_html: { id: "end_date" } %>
+      <%= f.submit "Make booking", class: "btn btn-book" %>
+      <% end %>
+    </div>
+  </div>
+  <div class="host-container text-center">
+    <%= link_to profile_path(@project.user_id) do %>
+      <h3>Project Leader</h3>
+      <%= cl_image_tag @project.user.profile_picture.url(:avatar), class: "avatar" %>
+      <h4><%= @project.user.first_name %> <%= @project.user.last_name %></h4>
+      <p><%= @project.user.email %></p>
+      <% if @project.user == current_user %>
+        <%= link_to "Edit project", edit_project_path(@project), class: "btn btn-edit" %>
+      <% end %>
     <% end %>
-    <%= f.input :start_date, as: :string, input_html: { id: "start_date" } %>
-    <%= f.input :end_date, as: :string, input_html: { id: "end_date" } %>
-    <%= f.submit "Make booking", class: "btn btn-primary" %>
-  <% end %>
+  </div>
+  <div class="bookings-container text-center">
+    <p>Bookings so far:</p>
+    <h3><%= @project.bookings.length %></h3>
+  </div>
 </div>

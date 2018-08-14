@@ -1,0 +1,32 @@
+.btn-book {
+  background-color: $green;
+  width: 100%;
+  border-radius: 5px;
+  color: white;
+  &:hover {
+    opacity: 0.9;
+  }
+}
+
+.btn-edit {
+  background-color: #FC9F5B;
+  border-radius: 5px;
+  color: white !important;
+  &:hover {
+    opacity: 0.9;
+  }
+}
+
+.btn-home {
+  background-color: $green;
+  font-size: 20px;
+  border-radius: 5px;
+  color: white;
+  &:hover {
+    color: rgba(255,255,255,0.7);
+  }
+}
+
+.small {
+    font-size: 14px !important;
+  }
