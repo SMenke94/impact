@@ -1,0 +1,44 @@
+<div class="container">
+  <h3>Upcoming Bookings</h3>
+    <div class="container">
+      <div class="row">
+        <% @bookings.each do |booking| %>
+          <div class="col-xs-12 col-sm-6 col-md-4">
+
+            <div class="card-booking">
+              <div class="card card-margin" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= booking.project.photo %>);">
+                <%= cl_image_tag booking.project.user.profile_picture.url(:avatar),
+                class: "card-project-avatar card-project-owner" %>
+              </div>
+              <div class="card-project-details">
+                <div class="card-project-info">
+                  <%= link_to project_path(booking.project) do  %>
+                    <h2><%= booking.project.title %></h2>
+                  <% end %>
+                  <p><%= booking.project.location %></p>
+                </div>
+                <div class="card-project-dates">
+                  <p><%= booking.start_date.strftime("%b %d, %Y") %> - <%= booking.end_date.strftime("%b %d, %Y") %></p>
+                </div>
+                <div class="card-project-participants">
+                  <p>All volunteers</p>
+                  <div class="card-project-participants">
+                    <% booking.all_volunteers.each do |volunteer| %>
+                      <%= link_to profile_path(volunteer) do %>
+                        <%= cl_image_tag volunteer.profile_picture.url(:avatar),
+                        class: "card-project-avatar card-project-participant" %>
+                      <% end %>
+                    <% end %>
+                  </div>
+                </div>
+                <!-- Link to project -->
+              </div>
+            </div>
+
+          </div>
+        <% end %>
+      </div>
+    </div>
+
+  <h3>Past Bookings</h3>
+</div>
