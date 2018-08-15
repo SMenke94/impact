@@ -3,7 +3,7 @@ class Booking < ApplicationRecord
   belongs_to :project
   validates :start_date, presence: true
   validates :end_date, presence: true
-  # validate :start_date_valid, :end_date_valid, :valid_capacity
+  validate :start_date_valid, :end_date_valid, :valid_capacity
 
 
   def start_date_valid

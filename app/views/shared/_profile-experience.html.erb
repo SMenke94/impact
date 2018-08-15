@@ -1,0 +1,22 @@
+<% if user.bookings.count{ |booking|
+  booking.start_date <= Date.today && booking.project.category.name == category.name
+} > 0 %>
+  <h4><%= category.name.capitalize %> (<%= user.bookings.count{ |booking|
+    booking.start_date <= Date.today && booking.project.category.name == category.name
+  } %>)</h4>
+  <ul>
+    <% user.bookings.order(:start_date).each do |booking| %>
+      <% if booking.start_date <= Date.today && booking.project.category.name == category.name %>
+      <li>
+        <%= booking.start_date %> at
+        <%= link_to project_path(booking.project) do  %>
+        <%= booking.project.title %>
+        <% end %>
+        in <%= booking.project.location %>
+      </li>
+      <% end %>
+    <% end %>
+  </ul>
+<% end %>
+
+

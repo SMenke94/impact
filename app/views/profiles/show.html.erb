@@ -46,8 +46,10 @@
       </div>
 
       <div class="profile-experience">
-        <h3>Experience (<%= @user.bookings.count %>)</h3>
-        <!-- @user.bookings.each do |booking| render ... -->
+        <h3>Experience (<%= @user.bookings.count{|booking| booking.start_date <= Date.today} %>)</h3>
+        <% @categories.order(:name).each do |category| %>
+          <%= render 'shared/profile-experience', category: category, user: @user %>
+        <% end %>
       </div>
 
       <!-- Add reviews to model and implement logic -->
