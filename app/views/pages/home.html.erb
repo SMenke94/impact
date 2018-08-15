@@ -1,12 +1,12 @@
 <div class="banner" id="home-banner">
+  <div class="login">
+    <%= link_to "Login", new_user_session_path, class: "btn btn-home small" %>
+  </div>
   <div class="banner-content">
     <h1>Impact</h1>
     <h2>
       <span id="banner-typed-text"></span>
     </h2>
     <%= link_to "Change the world", projects_path, class: "btn btn-home"%>
-    <div class="login">
-      <%= link_to "Login", new_user_session_path, class: "btn btn-home small" %>
-    </div>
   </div>
 </div>
