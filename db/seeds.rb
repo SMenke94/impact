@@ -155,7 +155,7 @@ giraffe_project = Project.new(
   to join us and help us out - with your help we can change the world! You will be staying in our home and helping us out - don't worry! We will
   provide all of your food and drink.",
   location: "Kenya",
-  category: other,
+  category: animals,
   capacity: 4,
   requirement: "No experience needed- just enthusiasm!",
   user: user1
@@ -170,7 +170,7 @@ health_project = Project.new(
   to join us and help us out - with your help we can change the world! You will be staying in our home and helping us out - don't worry! We will
   provide all of your food and drink.",
   location: "Leeds",
-  category: other,
+  category: health,
   capacity: 4,
   requirement: "Some medical experience is required",
   user: user1
@@ -185,7 +185,7 @@ allotment_project = Project.new(
   to join us and help us out - with your help we can change the world! You will be staying in our home and helping us out - don't worry! We will
   provide all of your food and drink.",
   location: "Epsom",
-  category: other,
+  category: environment,
   capacity: 4,
   requirement: "No experience needed",
   user: user3
