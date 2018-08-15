@@ -6,7 +6,7 @@ class CreateProjects < ActiveRecord::Migration[5.2]
       t.string :location
       t.integer :capacity
       t.references :user
-      t.references :category
+      t.string :category
 
       t.timestamps
     end
