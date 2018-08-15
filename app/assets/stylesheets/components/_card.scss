@@ -114,3 +114,34 @@
 .card-project-action {
   margin: 20px 0px ;
 }
+.card-project-dates {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  font-size: 18px;
+  font-weight: lighter;
+  padding: 12.5px 0px;
+}
+.card-volunteer-info {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 12.5px;
+  img {
+    margin: 0px;
+  }
+  span {
+    font-size: 18px;
+    font-weight: lighter;
+    margin: 12.5px 0px 12.5px 10px;
+  }
+}
+.card-project-owner2 {
+  width: 100px;
+  margin: 15px 0px;
+}
+.project-owner {
+  h4 {
+    margin-bottom: 20px;
+  }
+}
