@@ -7,7 +7,5 @@ Rails.application.routes.draw do
   get 'profiles/projects', to: 'profiles#projects_dashboard'
   get 'profiles/bookings', to: 'profiles#bookings_dashboard'
   get 'profiles/:id', to: 'profiles#show', as: :profile
-  resources :bookings, only: [ :destroy ]
-
-  # resources :bookings, only: [ :destroy ]
+  resources :bookings, only: [ :index, :show, :destroy ]
 end
