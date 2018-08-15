@@ -5,7 +5,7 @@ class Project < ApplicationRecord
   has_many :users, through: :bookings
   mount_uploader :photo, PhotoUploader
   validates :title, presence: true, uniqueness: true
-  validates :description, presence: true
+  validates :description, presence: true, length: { maximum: 50 }
   validates :location, presence: true
   validates :capacity, presence: true
   geocoded_by :location
