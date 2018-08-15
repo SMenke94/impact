@@ -11,23 +11,31 @@
 
     <!-- Left side of booking show page -->
     <div class="col-md-5">
-      <div class="card-booking">
+      <div class="card-booking card-project-details">
+
         <div class="card-bottom-border card-project-dates">
-          <p><%= @booking.start_date.strftime("%b %d, %Y") %> - <%= @booking.end_date.strftime("%b %d, %Y") %></p>
+          <span>
+            <strong>Check In</strong><br> <%= @booking.start_date.strftime("%a, %b %d, %Y") %>
+          </span>
+          <span>
+            <strong>Check Out</strong><br> <%= @booking.end_date.strftime("%a, %b %d, %Y") %>
+          </span>
         </div>
+
         <div class="card-bottom-border card-project-participants">
-          <p>Your fellow volunteers</p>
+          <p><strong>Your fellow volunteers</strong></p>
           <% @booking.all_volunteers.each do |volunteer| %>
-          <div class="volunteer-info">
-            <%= link_to profile_path(volunteer) do %>
-              <%= cl_image_tag volunteer.profile_picture.url(:avatar),
-              class: "card-project-avatar card-project-participant" %>
-            <% end %>
-            <span><%= volunteer.first_name %> <%= volunteer.last_name %></span>
+            <div class="card-volunteer-info">
+              <%= link_to profile_path(volunteer) do %>
+                <%= cl_image_tag volunteer.profile_picture.url(:avatar),
+                class: "card-project-avatar card-project-participant" %>
+              <% end %>
+              <span><%= volunteer.first_name %> <%= volunteer.last_name %></span>
+            </div>
             <!-- include start_date end_date of fellow volunteers-->
-          </div>
           <% end %>
         </div>
+
         <div class="card-bottom-border card-project-det">
           <%= link_to "View project", project_path(@booking.project) %>
         </div>
@@ -40,15 +48,15 @@
 
     <!-- Right side of booking show page -->
     <div class="col-md-4">
-      <div class="card-booking project-host">
+      <div class="card-booking card-project-details project-owner">
         <%= link_to profile_path(@booking.project.user) do %>
           <%= cl_image_tag @booking.project.user.profile_picture.url(:avatar),
-          class: "card-project-avatar card-project-participant" %>
+          class: "card-project-avatar card-project-owner2" %>
         <% end %>
-        <p><%= @booking.project.user.first_name %> <%= @booking.project.user.last_name %></p>
-        <p>Email</p>
-        <p>Name</p>
-        <p>Address</p>
+        <h4><%= @booking.project.user.first_name %> <%= @booking.project.user.last_name %></h4>
+        <p><i class="fas fa-phone"></i> Phone Number</p>
+        <p><i class="fas fa-at"></i> <%= @booking.project.user.email %></p>
+        <p><i class="fas fa-map-pin"></i> Address</p>
       </div>
     </div>
 
