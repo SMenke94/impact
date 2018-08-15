@@ -43,7 +43,7 @@
   <div class="host-container text-center">
     <%= link_to profile_path(@project.user_id) do %>
       <h3>Project Leader</h3>
-      <%= cl_image_tag @project.user.profile_picture.url(:avatar), class: "avatar" %>
+      <%= cl_image_tag @project.user.profile_picture.url(:avatar), class: "avatar", id: "host-photo" %>
       <h4><%= @project.user.first_name %> <%= @project.user.last_name %></h4>
       <p><%= @project.user.email %></p>
       <% if @project.user == current_user %>
