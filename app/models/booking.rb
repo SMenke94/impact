@@ -3,7 +3,7 @@ class Booking < ApplicationRecord
   belongs_to :project
   validates :start_date, presence: true
   validates :end_date, presence: true
-  validate :start_date_valid, :end_date_valid, :valid_capacity
+  # validate :start_date_valid, :end_date_valid, :valid_capacity
 
 
   def start_date_valid
@@ -28,6 +28,14 @@ class Booking < ApplicationRecord
 
   def all_dates
     (start_date..end_date)
+  end
+
+  def upcoming_booking?
+    self.start_date > Date.today
+  end
+
+  def past_booking?
+    self.start_date <= Date.today
   end
 
   def all_volunteers

@@ -1,3 +1,4 @@
+Booking.destroy_all
 Project.destroy_all
 User.destroy_all
 Category.destroy_all
@@ -41,7 +42,7 @@ user2 = User.new(
   first_name: "Jessica",
   last_name: "Price",
   email: "jessica@gmail.com",
-  password: "abcdef"
+  password: "123456"
   )
 user2.remote_profile_picture_url = url_user2
 user2.save
@@ -56,7 +57,7 @@ url_animal = "https://images.unsplash.com/photo-1503066211613-c17ebc9daef0?ixlib
 forest_project = Project.new(
   title: "Forest Project",
   description: "This is a super cool forest project in the forest",
-  location: "Amazon",
+  location: "Manaus, Brazil",
   category: environment,
   capacity: 4,
   user: user1
@@ -67,7 +68,7 @@ forest_project.save
 kids_project = Project.new(
   title: "Kids Project",
   description: "This is a super cool kids project with kids",
-  location: "Nepal",
+  location: "Kathmandu, Nepal",
   category: education,
   capacity: 2,
   user: user2
@@ -78,10 +79,29 @@ kids_project.save
 animal_project = Project.new(
   title: "Animal Project",
   description: "This is a super cool animal project with animals",
-  location: "Africa",
+  location: "Johannesburg, South Africa",
   category: animals,
   capacity: 4,
   user: user2
   )
 animal_project.remote_photo_url = url_animal
 animal_project.save
+
+
+# BOOKINGS
+
+booking1 = Booking.new(
+  start_date: "15 Aug 2018",
+  end_date: "16 Aug 2018",
+  user: user1,
+  project: kids_project,
+  )
+booking1.save
+
+booking2 = Booking.new(
+  start_date: "01 Oct 2018",
+  end_date: "30 Oct 2018",
+  user: user1,
+  project: animal_project,
+  )
+booking2.save

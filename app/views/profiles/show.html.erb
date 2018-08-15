@@ -45,17 +45,16 @@
         <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
       </div>
 
+      <div class="profile-experience">
+        <h3>Experience (<%= @user.bookings.count %>)</h3>
+        <!-- @user.bookings.each do |booking| render ... -->
+      </div>
+
       <!-- Add reviews to model and implement logic -->
       <div class="profile-reviews">
         <h3>Reviews (0)</h3>
         <!-- @user.reviews.each do |review| render ... -->
       </div>
-
-      <div class="profile-bookings">
-        <h3>Bookings (<%= @user.bookings.count %>)</h3>
-        <!-- @user.bookings.each do |booking| render ... -->
-      </div>
-
     </div>
   </div>
 </div>
