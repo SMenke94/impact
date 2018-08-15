@@ -6,8 +6,10 @@ class Project < ApplicationRecord
   mount_uploader :photo, PhotoUploader
   validates :title, presence: true, uniqueness: true
   validates :description, presence: true, length: { maximum: 50 }
+  validates :full_description, presence: true, length: { minimum: 100 }
   validates :location, presence: true
   validates :capacity, presence: true
+  validates :requirement, presence: true, length: { maximum: 100 }
   geocoded_by :location
   after_validation :geocode, if: :will_save_change_to_location?
 

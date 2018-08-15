@@ -4,9 +4,11 @@
   <div class="form-inputs">
     <%= f.input :title, required: true, autofocus: true %>
     <%= f.input :description, required: true %>
+    <%= f.input :full_description, required: true %>
     <%= f.input :location, required: true %>
     <%= f.association :category, required: true %>
     <%= f.input :capacity, required: true %>
+    <%= f.input :requirement, required: true %>
     <%= f.input :photo, required: false %>
     <%= f.input :photo_cache, as: :hidden %>
   </div>
