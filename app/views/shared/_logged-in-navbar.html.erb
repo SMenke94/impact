@@ -7,6 +7,7 @@
   <!-- Right Navigation -->
   <div class="navbar-wagon-right hidden-xs hidden-sm">
 
+    <%= link_to "Create new project", new_project_path, class: "navbar-wagon-item navbar-wagon-link" %>
     <%= link_to "My Bookings", profiles_bookings_path, class: "navbar-wagon-item navbar-wagon-link" %>
     <%= link_to "Logout", destroy_user_session_path, method: :delete, class: "navbar-wagon-item navbar-wagon-link" %>
     <%= link_to profile_path(current_user) do %>

@@ -57,9 +57,15 @@ url_animal = "https://images.unsplash.com/photo-1503066211613-c17ebc9daef0?ixlib
 forest_project = Project.new(
   title: "Forest Project",
   description: "This is a super cool forest project in the forest",
+  full_description: "Deforestation is one of the greatest causes of climate change and so we believe that this project is extremely important.
+   We are looking for passionate volunteers who will be able to plant trees and run educational workshops in the local town.
+   Volunteers will be hosted in a small cottage and all food and equipment will be provided. Ideally we would like people who are able to stay
+   for a few months, though we are happy to cater for shorter visits depending on availability. Thank you so much for considering our project
+    and we hope to meet you soon! Do get in touch if you have any questions before deciding to book.",
   location: "Manaus, Brazil",
   category: environment,
   capacity: 4,
+  requirement: "No experience needed but you will need to be fit for manual labour!",
   user: user1
   )
 forest_project.remote_photo_url = url_forest
@@ -68,9 +74,14 @@ forest_project.save
 kids_project = Project.new(
   title: "Kids Project",
   description: "This is a super cool kids project with kids",
+  full_description: "We believe the children are our future, teach them well and let them lead the way. Show them all the beauty they posses
+  inside. Give them a sense of pride, to make it easier. Let the children's laughter, remind us how we used to be. I decided long ago, never
+  to walk in anyone's shadow. If I fail, if I succeed, at least I'll live as I believe - no matter what they take from me they can't take away
+  my dignity. Because the greatest love of all is happening to me! I hope that you choose to join my project.",
   location: "Kathmandu, Nepal",
   category: education,
   capacity: 2,
+  requirement: "You will need to have some experience working with children.",
   user: user2
   )
 kids_project.remote_photo_url = url_kids
@@ -79,9 +90,15 @@ kids_project.save
 animal_project = Project.new(
   title: "Animal Project",
   description: "This is a super cool animal project with animals",
+  full_description: "I hear the drums echoing tonight but she hears only whispers of some quiet conversation. She's coming in, 12:30 flight
+  The moonlit wings reflect the stars that guide me towards salvation. I stopped an old man along the way, hoping to find some long forgotten
+  words or ancient melodies. He turned to me as if to say, Hurry boy, it's waiting there for you. It's gonna take a lot to take me away from you,
+  there's nothing that a hundred men or more could ever do, I bless the rains down in Africa, gonna take some time to do the things we never had.
+  I hope that you agree and will consider volunteering for my project!",
   location: "Johannesburg, South Africa",
   category: animals,
   capacity: 4,
+  requirement: "You will need to have some experience working with animals.",
   user: user2
   )
 animal_project.remote_photo_url = url_animal

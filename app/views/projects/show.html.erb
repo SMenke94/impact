@@ -14,11 +14,7 @@
       <h1><i class="fas fa-user-alt"></i></h1>
     </div>
       <h4>Required skills:</h4>
-      <ul>
-        <li>English language</li>
-        <li>Volunteering experience</li>
-        <li>Teaching experience</li>
-      </ul>
+      <p><%= @project.requirement %></p>
   </div>
   <div class="booking-form-container">
     <div class="form-body">
@@ -61,7 +57,7 @@
   </div>
   <div class="long-description">
     <p>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet consectetur. Pharetra massa massa ultricies mi quis hendrerit. Maecenas volutpat blandit aliquam etiam erat velit. Est velit egestas dui id ornare arcu. Amet nisl purus in mollis nunc sed id. Risus feugiat in ante metus dictum at tempor commodo ullamcorper. Tempor commodo ullamcorper a lacus. Ut morbi tincidunt augue interdum velit euismod in pellentesque. Ut lectus arcu bibendum at varius. Quis blandit turpis cursus in hac habitasse platea dictumst quisque. Turpis egestas sed tempus urna et pharetra pharetra massa. Arcu cursus vitae congue mauris rhoncus. Amet mauris commodo quis imperdiet massa tincidunt nunc. Eget est lorem ipsum dolor sit amet consectetur adipiscing elit. Tellus elementum sagittis vitae et. Pellentesque habitant morbi tristique senectus et netus et malesuada. Metus dictum at tempor commodo ullamcorper a lacus. Placerat vestibulum lectus mauris ultrices eros in.
+      <%= @project.full_description %>
     </p>
   </div>
 </div>
