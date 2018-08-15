@@ -30,6 +30,9 @@
               <% end %>
               <% end %>
             </div>
+            <div class="card-bottom-border card-project-det">
+              <%= link_to "See details", booking_path(booking) %>
+            </div>
             <div class="card-project-action">
               <%= link_to "Cancel booking", booking_path(booking), method: :delete, class: "btn btn-edit" %>
             </div>
@@ -71,6 +74,9 @@
               class: "card-project-avatar card-project-participant" %>
               <% end %>
               <% end %>
+            </div>
+            <div class="card-bottom-border card-project-det">
+              <%= link_to "See details", booking_path(booking) %>
             </div>
             <div class="card-project-action">
               <%= link_to "Add review", booking_path(booking), class: "btn btn-book" %>

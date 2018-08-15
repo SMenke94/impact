@@ -30,6 +30,10 @@ class Booking < ApplicationRecord
     (start_date..end_date)
   end
 
+  def time_period(start_date, end_date)
+    return (end_date - start_date).to_i
+  end
+
   def upcoming_booking?
     self.start_date > Date.today
   end
