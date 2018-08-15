@@ -1,0 +1,17 @@
+#map {
+  flex: 0 0 40%;
+  height: calc(100vh - 70px)!important;
+  position: sticky !important;
+  top: 0 !important;
+  margin-left: 10px;
+}
+
+.main-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.cards-container {
+  margin-top: 20px;
+  flex: 0 0 60%;
+}
