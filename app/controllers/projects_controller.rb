@@ -3,7 +3,15 @@ class ProjectsController < ApplicationController
   before_action :find_project, only: [ :show, :edit, :update, :destroy ]
 
   def index
-    @projects = Project.all
+    @projects = Project.where.not(latitude: nil, longitude: nil)
+
+    @markers = @projects.map do |project|
+      {
+        lat: project.latitude,
+        lng: project.longitude#,
+        # infoWindow: { content: render_to_string(partial: "/projects/map_box", locals: { flat: flat }) }
+      }
+    end
   end
 
   def show
