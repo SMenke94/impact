@@ -1,44 +1,85 @@
 <div class="container">
   <h3>Upcoming Bookings</h3>
-    <div class="container">
-      <div class="row">
-        <% @bookings.each do |booking| %>
-          <div class="col-xs-12 col-sm-6 col-md-4">
-
-            <div class="card-booking">
-              <div class="card card-margin" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= booking.project.photo %>);">
-                <%= cl_image_tag booking.project.user.profile_picture.url(:avatar),
-                class: "card-project-avatar card-project-owner" %>
-              </div>
-              <div class="card-project-details">
-                <div class="card-project-info">
-                  <%= link_to project_path(booking.project) do  %>
-                    <h2><%= booking.project.title %></h2>
-                  <% end %>
-                  <p><%= booking.project.location %></p>
-                </div>
-                <div class="card-project-dates">
-                  <p><%= booking.start_date.strftime("%b %d, %Y") %> - <%= booking.end_date.strftime("%b %d, %Y") %></p>
-                </div>
-                <div class="card-project-participants">
-                  <p>All volunteers</p>
-                  <div class="card-project-participants">
-                    <% booking.all_volunteers.each do |volunteer| %>
-                      <%= link_to profile_path(volunteer) do %>
-                        <%= cl_image_tag volunteer.profile_picture.url(:avatar),
-                        class: "card-project-avatar card-project-participant" %>
-                      <% end %>
-                    <% end %>
-                  </div>
-                </div>
-                <!-- Link to project -->
-              </div>
-            </div>
-
+  <div class="container">
+    <div class="row">
+      <% @bookings.order(:start_date).each do |booking| %>
+      <% if booking.upcoming_booking? %>
+      <div class="col-xs-12 col-sm-6 col-md-4">
+        <div class="card-booking">
+          <div class="card card-margin" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= booking.project.photo %>);">
+            <%= link_to profile_path(booking.project.user) do %>
+            <%= cl_image_tag booking.project.user.profile_picture.url(:avatar), class: "card-project-avatar card-project-owner" %>
+            <% end %>
           </div>
-        <% end %>
+          <div class="card-project-details">
+            <div class="card-bottom-border card-project-info">
+              <%= link_to project_path(booking.project) do  %>
+              <h2><%= booking.project.title %></h2>
+              <% end %>
+              <p><%= booking.project.location %></p>
+            </div>
+            <div class="card-bottom-border card-project-dates">
+              <p><%= booking.start_date.strftime("%b %d, %Y") %> - <%= booking.end_date.strftime("%b %d, %Y") %></p>
+            </div>
+            <div class="card-bottom-border card-project-participants">
+              <p>Your fellow volunteers</p>
+              <% booking.all_volunteers.each do |volunteer| %>
+              <%= link_to profile_path(volunteer) do %>
+              <%= cl_image_tag volunteer.profile_picture.url(:avatar),
+              class: "card-project-avatar card-project-participant" %>
+              <% end %>
+              <% end %>
+            </div>
+            <div class="card-project-action">
+              <%= link_to "Cancel booking", booking_path(booking), method: :delete, class: "btn btn-edit" %>
+            </div>
+          </div>
+        </div>
       </div>
+      <% end %>
+      <% end %>
     </div>
+  </div>
 
   <h3>Past Bookings</h3>
+  <div class="container">
+    <div class="row">
+      <% @bookings.order("end_date desc").each do |booking| %>
+      <% if booking.past_booking? %>
+      <div class="col-xs-12 col-sm-6 col-md-4">
+        <div class="card-booking">
+          <div class="card card-margin" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= booking.project.photo %>);">
+            <%= link_to profile_path(booking.project.user) do %>
+            <%= cl_image_tag booking.project.user.profile_picture.url(:avatar), class: "card-project-avatar card-project-owner" %>
+            <% end %>
+          </div>
+          <div class="card-project-details">
+            <div class="card-bottom-border card-project-info">
+              <%= link_to project_path(booking.project) do  %>
+              <h2><%= booking.project.title %></h2>
+              <% end %>
+              <p><%= booking.project.location %></p>
+            </div>
+            <div class="card-bottom-border card-project-dates">
+              <p><%= booking.start_date.strftime("%b %d, %Y") %> - <%= booking.end_date.strftime("%b %d, %Y") %></p>
+            </div>
+            <div class="card-bottom-border card-project-participants">
+              <p>Your fellow volunteers</p>
+              <% booking.all_volunteers.each do |volunteer| %>
+              <%= link_to profile_path(volunteer) do %>
+              <%= cl_image_tag volunteer.profile_picture.url(:avatar),
+              class: "card-project-avatar card-project-participant" %>
+              <% end %>
+              <% end %>
+            </div>
+            <div class="card-project-action">
+              <%= link_to "Add review", booking_path(booking), class: "btn btn-book" %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <% end %>
+      <% end %>
+    </div>
+  </div>
 </div>
