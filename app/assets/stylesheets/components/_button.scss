@@ -17,6 +17,15 @@
   }
 }
 
+.btn-delete {
+  background-color: $red;
+  border-radius: 5px;
+  color: white !important;
+  &:hover {
+    opacity: 0.9;
+  }
+}
+
 .btn-home {
   background-color: $green;
   font-size: 20px;
