@@ -8,8 +8,8 @@ class ProjectsController < ApplicationController
     @markers = @projects.map do |project|
       {
         lat: project.latitude,
-        lng: project.longitude#,
-        # infoWindow: { content: render_to_string(partial: "/projects/map_box", locals: { flat: flat }) }
+        lng: project.longitude,
+        infoWindow: { content: render_to_string(partial: "/shared/project-card", locals: { project: project }) }
       }
     end
   end
