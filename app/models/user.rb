@@ -5,9 +5,10 @@ class User < ApplicationRecord
   mount_uploader :profile_picture, PhotoUploader
   validates :first_name, presence: true
   validates :last_name, presence: true
-  validates :phone, presence: true, length: { minimum: 10, maximum: 15}
+  validates :phone, presence: true, length: { minimum: 10, maximum: 15 }
   validates :job_title, presence: true
   validates :location, presence: true
+  validates :bio, length: { maximum: 500 }
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,

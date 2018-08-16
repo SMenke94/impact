@@ -1,62 +1,55 @@
-<div class="container profile-page">
-  <div class="row">
-    <!-- Left side of profile page -->
+<div class="container text-center">
+  <div class="profile">
 
-    <div class="col-md-1"></div>
-
-    <div class="col-xs-12 col-md-3">
-
-      <div class="profile-picture">
-        <%= cl_image_tag @user.profile_picture.url(:avatar), class:"avatar profile-picture" %>
-      </div>
-
-      <% if current_user == @user %>
-        <div class="profile-edit">
-          <%= link_to "Edit Profile", edit_user_registration_path %>
-        </div>
-      <% end %>
-
-      <div class="profile-details">
-        <h4>Web Developer</h4>
-        <h4>Copenhagen, Denmark</h4>
-      </div>
-      <div class="profile-skills">
+    <div class="card-profile info-section">
+      <div class="card-content">
+        <%= cl_image_tag @user.profile_picture.url(:avatar), class:"avatar" %>
+        <% if current_user == @user %>
+        <%= link_to "Edit Profile", edit_user_registration_path %>
+        <% end %>
+        <h4><%= @user.job_title %></h4>
+        <h4><%= @user.location %></h4>
         <p><strong>Languages:</strong> English, French</p>
         <p><strong>Other:</strong> some cool skill</p>
       </div>
+    </div>
 
-      <div class="profile-projects">
+    <div class="card-profile description-section">
+      <div class="card-content">
+        <h2>Hey, I'm <%= @user.first_name %> <%= @user.last_name %></h2>
+        <p class="text-justify"><%= @user.bio %></p>
+        <p class="text-justify">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et e</p>
+      </div>
+    </div>
+
+    <div class="card-profile experience-section">
+      <div class="card-content">
+        <h3>Experience (<%= @user.bookings.count{|booking| booking.start_date <= Date.today} %>)</h3>
+        <% @categories.order(:name).each do |category| %>
+        <%= render 'shared/profile-experience', category: category, user: @user %>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="card-profile projects-section">
+      <div class="card-content">
         <h3>Projects (<%= @user.projects.count %>)</h3>
+        <div class="projects-display">
           <% @user.projects.each do |project| %>
             <%= render 'shared/project-card', project: project %>
           <% end %>
+        </div>
+      </div>
     </div>
 
-    </div>
-
-    <div class="col-md-1"></div>
-
-    <!-- Right side of profile page -->
-    <div class="col-xs-12 col-md-6">
-
-      <div class="profile-info">
-        <h2>Hey, I'm <%= @user.first_name %> <%= @user.last_name %></h2>
-        <p><%= @user.bio %></p>
-        <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
-      </div>
-
-      <div class="profile-experience">
-        <h3>Experience (<%= @user.bookings.count{|booking| booking.start_date <= Date.today} %>)</h3>
-        <% @categories.order(:name).each do |category| %>
-          <%= render 'shared/profile-experience', category: category, user: @user %>
-        <% end %>
-      </div>
-
-      <!-- Add reviews to model and implement logic -->
-      <div class="profile-reviews">
+    <!-- Add reviews to model and implement logic -->
+    <div class="card-profile reviews-section">
+      <div class="card-content">
         <h3>Reviews (0)</h3>
         <!-- @user.reviews.each do |review| render ... -->
       </div>
     </div>
+
   </div>
 </div>
+
