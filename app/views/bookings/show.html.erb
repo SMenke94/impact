@@ -11,9 +11,9 @@
 
     <!-- Left side of booking show page -->
     <div class="col-md-5">
-      <div class="card-booking card-project-details">
+      <div class="card-dashboard-frame card-dashboard-details">
 
-        <div class="card-bottom-border card-project-dates">
+        <div class="card-bottom-border project-dates">
           <span>
             <strong>Check In</strong><br> <%= @booking.start_date.strftime("%a, %b %d, %Y") %>
           </span>
@@ -22,13 +22,13 @@
           </span>
         </div>
 
-        <div class="card-bottom-border card-project-participants">
+        <div class="card-bottom-border">
           <p><strong>Your fellow volunteers</strong></p>
           <% @booking.all_volunteers.each do |volunteer| %>
-            <div class="card-volunteer-info">
+            <div class="volunteer-info">
               <%= link_to profile_path(volunteer) do %>
                 <%= cl_image_tag volunteer.profile_picture.url(:avatar),
-                class: "card-project-avatar card-project-participant" %>
+                class: "avatar", width: "50px" %>
               <% end %>
               <span><%= volunteer.first_name %> <%= volunteer.last_name %></span>
             </div>
@@ -36,7 +36,7 @@
           <% end %>
         </div>
 
-        <div class="card-bottom-border card-project-det">
+        <div class="action-margin">
           <%= link_to "View project", project_path(@booking.project) %>
         </div>
 
@@ -48,10 +48,10 @@
 
     <!-- Right side of booking show page -->
     <div class="col-md-4">
-      <div class="card-booking card-project-details project-owner">
+      <div class="card-dashboard-frame card-dashboard-details project-owner">
         <%= link_to profile_path(@booking.project.user) do %>
           <%= cl_image_tag @booking.project.user.profile_picture.url(:avatar),
-          class: "card-project-avatar card-project-owner2" %>
+          class: "avatar picture-margin", width: "100px" %>
         <% end %>
         <h4><%= @booking.project.user.first_name %> <%= @booking.project.user.last_name %></h4>
         <p><i class="fas fa-phone"></i> Phone Number</p>
