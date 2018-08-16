@@ -70,7 +70,8 @@ class ProjectsController < ApplicationController
   end
 
   def toggle_active_status
-    @project.toggle!(:active)
+    @project.active = !@project.active
+    @project.save
     redirect_to my_projects_path
 end
 
