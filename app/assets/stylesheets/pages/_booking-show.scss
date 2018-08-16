@@ -1,0 +1,26 @@
+.project-dates {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  font-size: 18px;
+  font-weight: lighter;
+  padding: 12.5px 0px;
+}
+// THIS MIGHT NEED MORE WORK
+.volunteer-info {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 12.5px;
+  img {
+    margin: 0px;
+  }
+  span {
+    font-size: 18px;
+    font-weight: lighter;
+    margin: 12.5px 0px 12.5px 10px;
+  }
+}
+.picture-margin {
+  margin: 15px 0px;
+}

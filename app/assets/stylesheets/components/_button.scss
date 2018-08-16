@@ -37,6 +37,18 @@
   }
 }
 
-.small {
-    font-size: 14px !important;
+.btn-action {
+  background-color: $green;
+  border-radius: 5px;
+  color: white;
+  &:hover {
+    opacity: 0.9;
+    color: white;
   }
+}
+
+.small {
+  font-size: 14px !important;
+}
+
+
