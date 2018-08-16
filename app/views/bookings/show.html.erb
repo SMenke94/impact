@@ -26,7 +26,7 @@
         <div class="card-bottom-border">
           <p><strong>Your fellow volunteers</strong></p>
           <% @booking.all_volunteers.each do |volunteer| %>
-            <% if volunteer != @booking.user %>
+            <% if volunteer != current_user %>
               <div class="volunteer-info">
                 <%= link_to profile_path(volunteer) do %>
                   <%= cl_image_tag volunteer.profile_picture.url(:avatar),
@@ -37,8 +37,8 @@
                 <% volunteer.bookings.each do |booking| %>
                   <% if (booking.all_dates).overlaps?(@booking.all_dates) &&
                          booking.project == @booking.project %>
-                    <span><%= booking.start_date.strftime("%a, %b %d") %></span>
-                    <span><%= booking.end_date.strftime("%a, %b %d") %></span>
+                    <span><%= booking.start_date.strftime("%a, %b %d") %> - <%= booking.end_date.strftime("%a, %b %d") %></span>
+
                   <% end %>
                 <% end %>
               </div>

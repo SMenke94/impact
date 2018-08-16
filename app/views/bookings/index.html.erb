@@ -14,7 +14,7 @@
           <div class="card-dashboard-details">
             <div class="card-bottom-border header-margin">
               <%= link_to project_path(booking.project) do  %>
-                <h2><%= booking.project.title %></h2>
+              <h2><%= booking.project.title %></h2>
               <% end %>
               <p><%= booking.project.location %></p>
             </div>
@@ -24,9 +24,11 @@
             <div class="card-bottom-border card-padding-bottom">
               <p>Your fellow volunteers</p>
               <% booking.all_volunteers.each do |volunteer| %>
+              <% if volunteer != current_user %>
               <%= link_to profile_path(volunteer) do %>
               <%= cl_image_tag volunteer.profile_picture.url(:avatar),
               class: "avatar", width: "50px" %>
+              <% end %>
               <% end %>
               <% end %>
             </div>
@@ -69,9 +71,11 @@
             <div class="card-bottom-border card-padding-bottom">
               <p>Your fellow volunteers</p>
               <% booking.all_volunteers.each do |volunteer| %>
+              <% if volunteer != current_user %>
               <%= link_to profile_path(volunteer) do %>
               <%= cl_image_tag volunteer.profile_picture.url(:avatar),
               class: "avatar", width: "50px" %>
+              <% end %>
               <% end %>
               <% end %>
             </div>
