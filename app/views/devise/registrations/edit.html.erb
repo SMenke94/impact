@@ -16,6 +16,9 @@
         <%= f.input :current_password, hint: "we need your current password to confirm your changes", required: true %>
         <%= f.input :password, autocomplete: "off", hint: "leave it blank if you don't want to change it", required: false %>
         <%= f.input :password_confirmation, required: false %>
+        <%= f.input :job_title, required: false %>
+        <%= f.input :location, required: false %>
+        <%= f.input :phone, required: false %>
         <%= f.input :bio, required: false %>
         <%= f.input :profile_picture, required: false %>
         <%= f.input :profile_picture_cache, as: :hidden %>
