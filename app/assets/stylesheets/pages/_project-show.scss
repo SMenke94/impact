@@ -7,6 +7,15 @@
   grid-template-rows: repeat(25, 1fr);
 }
 
+.similar-grid {
+  height: 60vh;
+  padding: 20px;
+  display: grid;
+  grid-template-columns: repeat(30, 1fr);
+  grid-template-rows: repeat(10, 1fr);
+  margin-bottom: 10px;
+}
+
 .description-container {
   grid-row: 1/ span 5;
   grid-column: 1/ span 15;
@@ -95,6 +104,30 @@
   justify-content: space-around;
   p {
     font-size: 20px;
+  }
+}
+
+.similar-projects {
+  grid-row: 27/ span 10;
+  grid-column: 1/ span 29;
+  padding: 20px;
+  background-color: rgba(135,187,162,0.4);
+  box-shadow: 2px 2px 3px rgba(0,0,0, 0.2);
+  border-radius: 3px;
+  h3 {
+    margin: 0;
+  }
+}
+
+.similar-locations {
+  grid-row: 38/ span 10;
+  grid-column: 1/ span 29;
+  padding: 20px;
+  background-color: rgba(252,159,91,0.6);
+  box-shadow: 2px 2px 3px rgba(0,0,0, 0.2);
+  border-radius: 3px;
+  h3 {
+    margin: 0;
   }
 }
 
