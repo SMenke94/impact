@@ -5,25 +5,25 @@
       <% @projects.each do |project| %>
       <!-- if project.active -->
         <div class="col-xs-12 col-sm-6 col-md-4">
-          <div class="card-booking">
-            <div class="card card-margin" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= project.photo %>);">
+          <div class="card-dashboard-frame">
+            <div class="card card-dashboard-picture" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= project.photo %>);">
             </div>
-            <div class="card-project-details">
-              <div class="card-bottom-border card-project-info">
+            <div class="card-dashboard-details">
+              <div class="card-bottom-border">
                 <%= link_to project_path(project) do  %>
                 <h2><%= project.title %></h2>
                 <% end %>
                 <p><%= project.location %></p>
               </div>
-              <div class="card-bottom-border card-project-dates">
+              <div class="card-bottom-border">
                 <p>Total bookings: <%= project.bookings.count %></p>
               </div>
-              <div class="card-bottom-border card-project-det">
+              <div class="card-bottom-border card-padding">
                 <%= link_to "See details", my_project_path(project) %>
               </div>
-              <div class="card-project-action">
+              <div class="card-margin">
                 <!-- Change "active" boolean to false -->
-                <%= link_to "Deactivate project", project_path(project), class: "btn btn-edit" %>
+                <%= link_to "Deactivate project", project_path(project), class: "btn btn-delete" %>
               </div>
             </div>
           </div>
@@ -39,25 +39,25 @@
       <% @projects.each do |project| %>
       <!-- if !project.active -->
         <div class="col-xs-12 col-sm-6 col-md-4">
-          <div class="card-booking">
-            <div class="card card-margin" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= project.photo %>);">
+          <div class="card-dashboard-frame">
+            <div class="card card-dashboard-picture" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= project.photo %>);">
             </div>
-            <div class="card-project-details">
-              <div class="card-bottom-border card-project-info">
+            <div class="card-dashboard-details">
+              <div class="card-bottom-border">
                 <%= link_to project_path(project) do  %>
                 <h2><%= project.title %></h2>
                 <% end %>
                 <p><%= project.location %></p>
               </div>
-              <div class="card-bottom-border card-project-dates">
+              <div class="card-bottom-border">
                 <p>Total bookings: <%= project.bookings.count %></p>
               </div>
-              <div class="card-bottom-border card-project-det">
+              <div class="card-bottom-border card-padding">
                 <%= link_to "See details", project_path(project) %>
               </div>
-              <div class="card-project-action">
+              <div class="card-margin">
                 <!-- Change "active" boolean to true -->
-                <%= link_to "Activate project", project_path(project), class: "btn btn-book" %>
+                <%= link_to "Activate project", project_path(project), class: "btn btn-action" %>
               </div>
             </div>
           </div>

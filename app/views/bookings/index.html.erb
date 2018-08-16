@@ -21,7 +21,7 @@
             <div class="card-bottom-border">
               <p><%= booking.start_date.strftime("%b %d, %Y") %> - <%= booking.end_date.strftime("%b %d, %Y") %></p>
             </div>
-            <div class="card-bottom-border content-padding-bottom">
+            <div class="card-bottom-border card-padding-bottom">
               <p>Your fellow volunteers</p>
               <% booking.all_volunteers.each do |volunteer| %>
               <%= link_to profile_path(volunteer) do %>
@@ -30,10 +30,10 @@
               <% end %>
               <% end %>
             </div>
-            <div class="card-bottom-border content-padding">
+            <div class="card-bottom-border card-padding">
               <%= link_to "See details", booking_path(booking) %>
             </div>
-            <div class="action-margin">
+            <div class="card-margin">
               <%= link_to "Cancel booking", booking_path(booking), method: :delete, class: "btn btn-delete" %>
             </div>
           </div>
@@ -66,7 +66,7 @@
             <div class="card-bottom-border">
               <p><%= booking.start_date.strftime("%b %d, %Y") %> - <%= booking.end_date.strftime("%b %d, %Y") %></p>
             </div>
-            <div class="card-bottom-border content-padding-bottom">
+            <div class="card-bottom-border card-padding-bottom">
               <p>Your fellow volunteers</p>
               <% booking.all_volunteers.each do |volunteer| %>
               <%= link_to profile_path(volunteer) do %>
@@ -75,10 +75,10 @@
               <% end %>
               <% end %>
             </div>
-            <div class="card-bottom-border content-padding">
+            <div class="card-bottom-border card-padding">
               <%= link_to "See details", booking_path(booking) %>
             </div>
-            <div class="action-margin">
+            <div class="card-margin">
               <%= link_to "Add review", booking_path(booking), class: "btn btn-action" %>
             </div>
           </div>

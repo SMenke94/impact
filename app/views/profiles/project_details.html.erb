@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-md-1"></div>
     <div class="col-xs-12 col-md-11">
-      <h2><%= @project.title %> details!</h2>
+      <h2>Your project's details!</h2>
     </div>
   </div>
 
@@ -11,49 +11,45 @@
 
     <!-- Left side of booking show page -->
     <div class="col-md-6">
-      <div class="card-booking card-project-details">
+      <div class="card-dashboard-frame card-dashboard-details">
 
-        <div class="card-bottom-border card-project-participants">
+        <div class="card-bottom-border card-padding-bottom volunteer-overview">
           <p><strong>Your current volunteers</strong></p>
           <% @project.bookings.each do |booking| %>
             <% if (booking.start_date <= Date.today) && (booking.end_date >= Date.today) %>
               <%= link_to profile_path(booking.user) do  %>
                 <%= cl_image_tag booking.user.profile_picture.url(:avatar),
-                class: "card-project-avatar card-project-participant" %>
+                class: "avatar", width: "50px" %>
               <% end %>
               <span><%= booking.user.first_name %> <%= booking.user.last_name %></span>
             <% end %>
           <% end %>
         </div>
 
-        <div class="card-bottom-border card-project-participants">
+        <div class="card-bottom-border card-padding-bottom volunteer-overview">
           <p><strong>Your upcoming volunteers</strong></p>
           <% @project.bookings.each do |booking| %>
             <% if booking.start_date > Date.today %>
               <%= link_to profile_path(booking.user) do  %>
                 <%= cl_image_tag booking.user.profile_picture.url(:avatar),
-                class: "card-project-avatar card-project-participant" %>
+                class: "avatar", width: "50px" %>
               <% end %>
               <span><%= booking.user.first_name %> <%= booking.user.last_name %></span>
             <% end %>
           <% end %>
         </div>
 
-        <div class="card-bottom-border card-project-participants">
+        <div class="card-padding-bottom volunteer-overview">
           <p><strong>Your past volunteers</strong></p>
           <% @project.bookings.each do |booking| %>
             <% if booking.end_date < Date.today %>
               <%= link_to profile_path(booking.user) do  %>
                 <%= cl_image_tag booking.user.profile_picture.url(:avatar),
-                class: "card-project-avatar card-project-participant" %>
+                class: "avatar", width: "50px" %>
               <% end %>
               <span><%= booking.user.first_name %> <%= booking.user.last_name %></span>
             <% end %>
           <% end %>
-        </div>
-
-        <div class="card-bottom-border card-project-det">
-          <%= link_to "View project", project_path(@project) %>
         </div>
 
       </div>
@@ -63,15 +59,28 @@
 
     <!-- Right side of booking show page -->
     <div class="col-md-3">
-      <div class="card-booking card-project-details">
-        <div class="card card-margin" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= @project.photo %>);">
+      <div class="card-dashboard-frame">
+        <div class="card card-dashboard-picture" style="background-image: url(<%= @project.photo %>);">
         </div>
-        <div class="card-category"><%= @project.category.name %></div>
+        <div class="card-dashboard-details">
+          <div class="card-bottom-border">
+            <%= link_to project_path(@project) do  %>
+            <h2><%= @project.title %></h2>
+            <% end %>
+            <p><%= @project.location %></p>
+          </div>
+          <div class="card-bottom-border">
+            <p>Total bookings: <%= @project.bookings.count %></p>
+          </div>
+          <div class="card-bottom-border card-padding">
+            <%= link_to "View project", project_path(@project) %>
+          </div>
+          <div class="card-margin">
+            <!-- Change "active" boolean to false -->
+            <%= link_to "Deactivate project", project_path(@project), class: "btn btn-delete" %>
+          </div>
+        </div>
       </div>
-      <div class="card-description">
-        <h2><%= @project.title %></h2>
-      </div>
-      <%= link_to "", project_path(@project), class: "card-link" %>
     </div>
 
     <div class="col-md-1"></div>

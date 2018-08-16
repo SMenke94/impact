@@ -36,7 +36,7 @@
           <% end %>
         </div>
 
-        <div class="action-margin">
+        <div class="card-margin">
           <%= link_to "View project", project_path(@booking.project) %>
         </div>
 
@@ -48,7 +48,7 @@
 
     <!-- Right side of booking show page -->
     <div class="col-md-4">
-      <div class="card-dashboard-frame card-dashboard-details project-owner">
+      <div class="card-dashboard-frame card-dashboard-details">
         <%= link_to profile_path(@booking.project.user) do %>
           <%= cl_image_tag @booking.project.user.profile_picture.url(:avatar),
           class: "avatar picture-margin", width: "100px" %>
