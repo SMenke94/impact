@@ -87,7 +87,11 @@
           </div>
           <div class="card-margin">
             <!-- Change "active" boolean to false -->
-            <%= link_to "Deactivate project", project_path(@project), class: "btn btn-delete" %>
+            <% if @project.active %>
+              <%= link_to "Deactivate project", toggle_active_status_project_path(@project), method: :patch, class: "btn btn-delete" %>
+            <% else %>
+              <%= link_to "Activate project", toggle_active_status_project_path(@project), method: :patch, class: "btn btn-action" %>
+            <% end %>
           </div>
         </div>
       </div>
