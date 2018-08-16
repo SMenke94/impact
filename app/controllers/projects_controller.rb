@@ -15,13 +15,16 @@ class ProjectsController < ApplicationController
       @projects = Project.all
     end
 
-    @markers = @projects.map do |project|
-      {
-        lat: project.latitude,
-        lng: project.longitude,
-        infoWindow: { content: render_to_string(partial: "/shared/project-card", locals: { project: project }) },
-        icon: ActionController::Base.helpers.asset_path("#{project.category.name.downcase}.png")
-      }
+    @active = []
+    @projects.each { |project|  project.active ? @active << project : project }
+
+    @markers = @active.map do |project|
+        {
+          lat: project.latitude,
+          lng: project.longitude,
+          infoWindow: { content: render_to_string(partial: "/shared/project-card", locals: { project: project }) },
+          icon: ActionController::Base.helpers.asset_path("#{project.category.name.downcase}.png")
+        }
     end
   end
 
