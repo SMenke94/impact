@@ -3,7 +3,7 @@
   <div class="container">
     <div class="row">
       <% @projects.each do |project| %>
-      <!-- if project.active -->
+      <% if project.active %>
         <div class="col-xs-12 col-sm-6 col-md-4">
           <div class="card-dashboard-frame">
             <div class="card card-dashboard-picture" style="background-image: url(<%= project.photo %>);">
@@ -23,12 +23,12 @@
               </div>
               <div class="card-margin">
                 <!-- Change "active" boolean to false -->
-                <%= link_to "Deactivate project", project_path(project), class: "btn btn-delete" %>
+                <%= link_to "Deactivate project", toggle_active_status_project_path(project), method: :patch, class: "btn btn-delete" %>
               </div>
             </div>
           </div>
         </div>
-      <!-- end -->
+      <% end %>
       <% end %>
     </div>
   </div>
@@ -37,7 +37,7 @@
   <div class="container">
     <div class="row">
       <% @projects.each do |project| %>
-      <!-- if !project.active -->
+      <% if !project.active %>
         <div class="col-xs-12 col-sm-6 col-md-4">
           <div class="card-dashboard-frame">
             <div class="card card-dashboard-picture" style="background-image: url(<%= project.photo %>);">
@@ -57,12 +57,12 @@
               </div>
               <div class="card-margin">
                 <!-- Change "active" boolean to true -->
-                <%= link_to "Activate project", project_path(project), class: "btn btn-action" %>
+                <%= link_to "Activate project", toggle_active_status_project_path(project), method: :patch, class: "btn btn-action" %>
               </div>
             </div>
           </div>
         </div>
-      <!-- end -->
+      <% end %>
       <% end %>
     </div>
   </div>

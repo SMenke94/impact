@@ -2,6 +2,9 @@ Rails.application.routes.draw do
   devise_for :users, controllers: { registrations: "users/registrations", sessions: "users/sessions" }
   root 'pages#home'
   resources :projects do
+    member do
+        patch :toggle_active_status
+    end
     resources :bookings, only: [ :create ]
   end
   get 'my-projects', to: 'profiles#projects'
