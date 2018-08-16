@@ -1,1 +1,80 @@
-<h2>An individual project</h2>
+<div class="container">
+  <div class="row">
+    <div class="col-md-1"></div>
+    <div class="col-xs-12 col-md-11">
+      <h2><%= @project.title %> details!</h2>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-1"></div>
+
+    <!-- Left side of booking show page -->
+    <div class="col-md-6">
+      <div class="card-booking card-project-details">
+
+        <div class="card-bottom-border card-project-participants">
+          <p><strong>Your current volunteers</strong></p>
+          <% @project.bookings.each do |booking| %>
+            <% if (booking.start_date <= Date.today) && (booking.end_date >= Date.today) %>
+              <%= link_to profile_path(booking.user) do  %>
+                <%= cl_image_tag booking.user.profile_picture.url(:avatar),
+                class: "card-project-avatar card-project-participant" %>
+              <% end %>
+              <span><%= booking.user.first_name %> <%= booking.user.last_name %></span>
+            <% end %>
+          <% end %>
+        </div>
+
+        <div class="card-bottom-border card-project-participants">
+          <p><strong>Your upcoming volunteers</strong></p>
+          <% @project.bookings.each do |booking| %>
+            <% if booking.start_date > Date.today %>
+              <%= link_to profile_path(booking.user) do  %>
+                <%= cl_image_tag booking.user.profile_picture.url(:avatar),
+                class: "card-project-avatar card-project-participant" %>
+              <% end %>
+              <span><%= booking.user.first_name %> <%= booking.user.last_name %></span>
+            <% end %>
+          <% end %>
+        </div>
+
+        <div class="card-bottom-border card-project-participants">
+          <p><strong>Your past volunteers</strong></p>
+          <% @project.bookings.each do |booking| %>
+            <% if booking.end_date < Date.today %>
+              <%= link_to profile_path(booking.user) do  %>
+                <%= cl_image_tag booking.user.profile_picture.url(:avatar),
+                class: "card-project-avatar card-project-participant" %>
+              <% end %>
+              <span><%= booking.user.first_name %> <%= booking.user.last_name %></span>
+            <% end %>
+          <% end %>
+        </div>
+
+        <div class="card-bottom-border card-project-det">
+          <%= link_to "View project", project_path(@project) %>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="col-md-1"></div>
+
+    <!-- Right side of booking show page -->
+    <div class="col-md-3">
+      <div class="card-booking card-project-details">
+        <div class="card card-margin" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= @project.photo %>);">
+        </div>
+        <div class="card-category"><%= @project.category.name %></div>
+      </div>
+      <div class="card-description">
+        <h2><%= @project.title %></h2>
+      </div>
+      <%= link_to "", project_path(@project), class: "card-link" %>
+    </div>
+
+    <div class="col-md-1"></div>
+  </div>
+</div>
+
