@@ -1,1 +1,70 @@
-<h2>Projects Dashboard</h2>
+<div class="container">
+  <h3>Active Projects</h3>
+  <div class="container">
+    <div class="row">
+      <% @projects.each do |project| %>
+      <!-- if project.active -->
+        <div class="col-xs-12 col-sm-6 col-md-4">
+          <div class="card-booking">
+            <div class="card card-margin" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= project.photo %>);">
+            </div>
+            <div class="card-project-details">
+              <div class="card-bottom-border card-project-info">
+                <%= link_to project_path(project) do  %>
+                <h2><%= project.title %></h2>
+                <% end %>
+                <p><%= project.location %></p>
+              </div>
+              <div class="card-bottom-border card-project-dates">
+                <p>Total bookings: <%= project.bookings.count %></p>
+              </div>
+              <div class="card-bottom-border card-project-det">
+                <%= link_to "See details", project_path(project) %>
+              </div>
+              <div class="card-project-action">
+                <!-- Change "active" boolean to false -->
+                <%= link_to "Deactivate project", project_path(project), class: "btn btn-edit" %>
+              </div>
+            </div>
+          </div>
+        </div>
+      <!-- end -->
+      <% end %>
+    </div>
+  </div>
+
+  <h3>Inactive Projects</h3>
+  <div class="container">
+    <div class="row">
+      <% @projects.each do |project| %>
+      <!-- if !project.active -->
+        <div class="col-xs-12 col-sm-6 col-md-4">
+          <div class="card-booking">
+            <div class="card card-margin" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= project.photo %>);">
+            </div>
+            <div class="card-project-details">
+              <div class="card-bottom-border card-project-info">
+                <%= link_to project_path(project) do  %>
+                <h2><%= project.title %></h2>
+                <% end %>
+                <p><%= project.location %></p>
+              </div>
+              <div class="card-bottom-border card-project-dates">
+                <p>Total bookings: <%= project.bookings.count %></p>
+              </div>
+              <div class="card-bottom-border card-project-det">
+                <%= link_to "See details", project_path(project) %>
+              </div>
+              <div class="card-project-action">
+                <!-- Change "active" boolean to true -->
+                <%= link_to "Activate project", project_path(project), class: "btn btn-book" %>
+              </div>
+            </div>
+          </div>
+        </div>
+      <!-- end -->
+      <% end %>
+    </div>
+  </div>
+
+</div>
