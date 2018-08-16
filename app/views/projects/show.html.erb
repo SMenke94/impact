@@ -62,23 +62,28 @@
     </p>
   </div>
 </div>
-
-<div class="similar-grid">
-  <div class="similar-projects">
-    <h3>Other <%= @project.category.name %> projects:</h3>
-    <div class="container">
-    <div class="row">
-      <% @similar_projects[0..3].each do |project| %>
-        <% if project != @project %>
-          <div class="col-xs-12 col-sm-6 col-md-4">
-            <%= render 'shared/project-card', project: project %>
-          </div>
-        <% end %>
+<% if @similar_projects.length > 1 %>
+  <div class="similar-grid">
+    <div class="similar-projects">
+      <% if @project.category.name == "Other" %>
+        <h3>Similar projects:</h3>
+      <% else %>
+        <h3>Other <%= @project.category.name %> projects:</h3>
       <% end %>
-    </div>
+      <div class="container">
+      <div class="row">
+        <% @similar_projects[0..3].each do |project| %>
+          <% if project != @project %>
+            <div class="col-xs-12 col-sm-6 col-md-4">
+              <%= render 'shared/project-card', project: project %>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+      </div>
     </div>
   </div>
-</div>
+<% end %>
 <% if @similar_locations.length > 1 %>
   <div class="similar-grid">
     <div class="similar-locations">
