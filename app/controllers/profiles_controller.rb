@@ -4,7 +4,11 @@ class ProfilesController < ApplicationController
     @categories = Category.all
   end
 
-  def bookings_dashboard
-    @bookings = current_user.bookings
+  def projects
+    @projects = current_user.projects
+  end
+
+  def project_details
+    @project = current_user.projects.find(params[:id])
   end
 end
