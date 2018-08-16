@@ -27,6 +27,8 @@ class ProjectsController < ApplicationController
   def show
     @booking = Booking.new
     @markers = [{ lat: @project.latitude, lng: @project.longitude}]
+    @similar_projects = Project.where(category: @project.category)
+    @similar_locations = Project.near([@project.latitude, @project.longitude], 500)
   end
 
   def new
