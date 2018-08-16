@@ -11,7 +11,6 @@ if (mapElement) { // don't try to build a map if there's no div#map to inject in
     map.setCenter(markers[0].lat, markers[0].lng);
     map.setZoom(8);
   } else {
-    map.setCenter(markers[1].lat, markers[1].lng);
-    map.setZoom(2);
+    map.fitLatLngBounds(markers);
   }
 }
