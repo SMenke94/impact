@@ -4,15 +4,26 @@
   background: white;
   transition: all 0.3s ease;
   height: 70px;
-  padding: 0px 30px;
+  padding: 0px 30px 0px 10px;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
 /* Logo */
+.logo-div {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 70px;
+  width: 70px;
+}
+
 .navbar-wagon-brand img {
   height: 50px;
+  &:hover {
+    height: 60px;
+  }
 }
 
 /* User Avatar */
