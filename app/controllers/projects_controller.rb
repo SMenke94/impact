@@ -19,14 +19,19 @@ class ProjectsController < ApplicationController
       {
         lat: project.latitude,
         lng: project.longitude,
-        infoWindow: { content: render_to_string(partial: "/shared/project-card", locals: { project: project }) }
+        infoWindow: { content: render_to_string(partial: "/shared/project-card", locals: { project: project }) },
+        icon: ActionController::Base.helpers.asset_path("#{project.category.name.downcase}.png")
       }
     end
   end
 
   def show
     @booking = Booking.new
-    @markers = [{ lat: @project.latitude, lng: @project.longitude}]
+    @markers = [{
+      lat: @project.latitude,
+      lng: @project.longitude,
+      icon: ActionController::Base.helpers.asset_path("#{@project.category.name.downcase}.png")
+    }]
     @similar_projects = Project.where(category: @project.category)
     @similar_locations = Project.near([@project.latitude, @project.longitude], 500)
   end
