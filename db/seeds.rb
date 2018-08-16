@@ -33,6 +33,9 @@ url_user3 = "https://images.unsplash.com/photo-1522556189639-b150ed9c4330?ixlib=
 user1 = User.new(
   first_name: "Catherine",
   last_name: "Miller",
+  phone: "1234567890",
+  job_title: "Web Developer",
+  location: "Copenhagen, Denmark",
   email: "cathy@gmail.com",
   password: "123456"
   )
@@ -42,6 +45,9 @@ user1.save
 user2 = User.new(
   first_name: "Jessica",
   last_name: "Price",
+  phone: "1234567890",
+  job_title: "Nurse",
+  location: "Paris, France",
   email: "jessica@gmail.com",
   password: "123456"
   )
@@ -51,6 +57,9 @@ user2.save
 user3 = User.new(
   first_name: "John",
   last_name: "Price",
+  phone: "1234567890",
+  job_title: "High School Teacher",
+  location: "London, England",
   email: "john@gmail.com",
   password: "123456"
   )
