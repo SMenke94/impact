@@ -6,12 +6,13 @@
 
 <div class="container">
   <div class="row">
+    <div class="col-md-1"></div>
 
     <!-- Left side of booking show page -->
     <div class="col-md-7">
       <div class="card-dashboard-frame card-dashboard-details background-white">
         <div>
-          <h3>Your booking's details</h3>
+          <h3>Your booking's details!</h3>
         </div>
 
         <div class="card-bottom-border project-dates card-margin">
@@ -37,8 +38,7 @@
                 <% volunteer.bookings.each do |booking| %>
                   <% if (booking.all_dates).overlaps?(@booking.all_dates) &&
                          booking.project == @booking.project %>
-                    <span><%= booking.start_date.strftime("%a, %b %d") %> - <%= booking.end_date.strftime("%a, %b %d") %></span>
-
+                    <span><%= booking.start_date.strftime("%a, %b %d, %Y") %> - <br> <%= booking.end_date.strftime("%a, %b %d, %Y") %></span>
                   <% end %>
                 <% end %>
               </div>
@@ -49,17 +49,13 @@
         <div class="card-margin">
           <%= link_to "View project", project_path(@booking.project) %>
         </div>
-
       </div>
-
     </div>
 
-    <div class="col-md-1"></div>
-
     <!-- Right side of booking show page -->
-    <div class="col-md-4">
+    <div class="col-md-3">
       <div class="card-dashboard-frame card-dashboard-details background-white">
-        <h3>Contact your host!</h3>
+        <h3>Your host!</h3>
         <%= link_to profile_path(@booking.project.user) do %>
           <%= cl_image_tag @booking.project.user.profile_picture.url(:avatar),
           class: "avatar picture-margin", width: "100px" %>
@@ -70,6 +66,5 @@
         <p><i class="fas fa-map-pin"></i> <%= @booking.project.address %></p>
       </div>
     </div>
-
   </div>
 </div>

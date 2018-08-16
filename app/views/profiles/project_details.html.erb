@@ -10,56 +10,66 @@
     <div class="col-md-1"></div>
 
     <!-- Left side of booking show page -->
-    <div class="col-md-6">
-      <div class="card-dashboard-frame card-dashboard-details">
+    <div class="col-md-7">
+      <div class="card-dashboard-frame card-dashboard-details background-white">
 
-        <div class="card-bottom-border card-padding-bottom volunteer-overview">
+        <div class="card-bottom-border">
           <p><strong>Your current volunteers</strong></p>
-          <% @project.bookings.each do |booking| %>
+          <% @project.bookings.order(:start_date).each do |booking| %>
+          <div class="volunteer-info">
             <% if (booking.start_date <= Date.today) && (booking.end_date >= Date.today) %>
-              <%= link_to profile_path(booking.user) do  %>
-                <%= cl_image_tag booking.user.profile_picture.url(:avatar),
-                class: "avatar", width: "50px" %>
-              <% end %>
-              <span><%= booking.user.first_name %> <%= booking.user.last_name %></span>
+            <%= link_to profile_path(booking.user) do  %>
+            <%= cl_image_tag booking.user.profile_picture.url(:avatar),
+            class: "avatar", width: "50px" %>
             <% end %>
+            <span><%= booking.user.first_name %> <%= booking.user.last_name %></span>
+            <span><%= booking.user.email %></span>
+            <span><%= booking.start_date.strftime("%a, %b %d, %Y") %> - <br> <%= booking.end_date.strftime("%a, %b %d, %Y") %></span>
+            <% end %>
+          </div>
           <% end %>
         </div>
 
-        <div class="card-bottom-border card-padding-bottom volunteer-overview">
+        <div class="card-bottom-border">
           <p><strong>Your upcoming volunteers</strong></p>
-          <% @project.bookings.each do |booking| %>
+          <% @project.bookings.order(:start_date).each do |booking| %>
+          <div class="volunteer-info">
             <% if booking.start_date > Date.today %>
-              <%= link_to profile_path(booking.user) do  %>
-                <%= cl_image_tag booking.user.profile_picture.url(:avatar),
-                class: "avatar", width: "50px" %>
-              <% end %>
-              <span><%= booking.user.first_name %> <%= booking.user.last_name %></span>
+            <%= link_to profile_path(booking.user) do  %>
+            <%= cl_image_tag booking.user.profile_picture.url(:avatar),
+            class: "avatar", width: "50px" %>
             <% end %>
+            <span><%= booking.user.first_name %> <%= booking.user.last_name %></span>
+            <span><%= booking.user.email %></span>
+            <span><%= booking.start_date.strftime("%a, %b %d, %Y") %> - <br> <%= booking.end_date.strftime("%a, %b %d, %Y") %></span>
+            <% end %>
+          </div>
           <% end %>
         </div>
 
-        <div class="card-padding-bottom volunteer-overview">
+        <div>
           <p><strong>Your past volunteers</strong></p>
-          <% @project.bookings.each do |booking| %>
+          <% @project.bookings.order("end_date desc").each do |booking| %>
+          <div class="volunteer-info">
             <% if booking.end_date < Date.today %>
-              <%= link_to profile_path(booking.user) do  %>
-                <%= cl_image_tag booking.user.profile_picture.url(:avatar),
-                class: "avatar", width: "50px" %>
-              <% end %>
-              <span><%= booking.user.first_name %> <%= booking.user.last_name %></span>
+            <%= link_to profile_path(booking.user) do  %>
+            <%= cl_image_tag booking.user.profile_picture.url(:avatar),
+            class: "avatar", width: "50px" %>
             <% end %>
+            <span><%= booking.user.first_name %> <%= booking.user.last_name %></span>
+            <span><%= booking.user.email %></span>
+            <span><%= booking.start_date.strftime("%a, %b %d, %Y") %> - <br> <%= booking.end_date.strftime("%a, %b %d, %Y") %></span>
+            <% end %>
+          </div>
           <% end %>
         </div>
 
       </div>
     </div>
 
-    <div class="col-md-1"></div>
-
     <!-- Right side of booking show page -->
     <div class="col-md-3">
-      <div class="card-dashboard-frame">
+      <div class="card-dashboard-frame background-white">
         <div class="card card-dashboard-picture" style="background-image: url(<%= @project.photo %>);">
         </div>
         <div class="card-dashboard-details">
@@ -82,8 +92,6 @@
         </div>
       </div>
     </div>
-
-    <div class="col-md-1"></div>
   </div>
 </div>
 
