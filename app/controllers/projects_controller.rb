@@ -1,6 +1,6 @@
 class ProjectsController < ApplicationController
   skip_before_action :authenticate_user!, only: [ :index, :show ]
-  before_action :find_project, only: [ :show, :edit, :update, :destroy ]
+  before_action :find_project, only: [ :show, :edit, :update, :destroy, :toggle_active_status ]
 
   def index
     if params[:query].present? && params[:query] != ""
@@ -68,6 +68,11 @@ class ProjectsController < ApplicationController
     @project.destroy
     redirect_to projects_path
   end
+
+  def toggle_active_status
+    @project.toggle!(:active)
+    redirect_to my_projects_path
+end
 
   private
 
