@@ -1,9 +1,13 @@
+puts "Destroying old records..."
+
 Booking.destroy_all
 Project.destroy_all
 User.destroy_all
 Category.destroy_all
 
 # CATEGORIES
+
+puts "Seeding categories..."
 
 environment = Category.new(name: "Environment")
 environment.save
@@ -25,6 +29,7 @@ other.save
 
 
 # USERS
+puts "Seeding users..."
 
 url_user1 = "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=5d43ec18ec2cf6ff854513b9e8395c1e&auto=format&fit=crop&w=1650&q=80"
 url_user2 = "https://images.unsplash.com/photo-1477118476589-bff2c5c4cfbb?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=ad57f7ca5832f3f72ee2c1c243c72f5c&auto=format&fit=crop&w=1650&q=80"
@@ -68,6 +73,8 @@ user3.save
 
 # PROJECTS
 
+puts "Seeding projects..."
+
 url_forest = "https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=d4147a2e4e3f79299e2f0c92b13db9ee&auto=format&fit=crop&w=934&q=80"
 url_kids = "https://images.unsplash.com/photo-1511949860663-92c5c57d48a7?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=97b08b2596c6a45168b3ae9e766010e0&auto=format&fit=crop&w=1650&q=80"
 url_animal = "https://images.unsplash.com/photo-1503066211613-c17ebc9daef0?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=db24a634bad2f3b05cfe733c26e7680f&auto=format&fit=crop&w=1650&q=80"
@@ -86,9 +93,11 @@ forest_project = Project.new(
    for a few months, though we are happy to cater for shorter visits depending on availability. Thank you so much for considering our project
     and we hope to meet you soon! Do get in touch if you have any questions before deciding to book.",
   location: "Manaus, Brazil",
+  address: "Av. Joaquim Nabuco, 2367",
   category: environment,
   capacity: 4,
   requirement: "No experience needed but you will need to be fit for manual labour!",
+  active: true,
   user: user1
   )
 forest_project.remote_photo_url = url_forest
@@ -102,9 +111,11 @@ kids_project = Project.new(
   to walk in anyone's shadow. If I fail, if I succeed, at least I'll live as I believe - no matter what they take from me they can't take away
   my dignity. Because the greatest love of all is happening to me! I hope that you choose to join my project.",
   location: "Kathmandu, Nepal",
+  address: "Chaksabari Marg, Kathmandu",
   category: education,
   capacity: 2,
   requirement: "You will need to have some experience working with children.",
+  active: true,
   user: user2
   )
 kids_project.remote_photo_url = url_kids
@@ -119,9 +130,11 @@ animal_project = Project.new(
   there's nothing that a hundred men or more could ever do, I bless the rains down in Africa, gonna take some time to do the things we never had.
   I hope that you agree and will consider volunteering for my project!",
   location: "Johannesburg, South Africa",
+  address: "Jan Smuts Ave & Upper Park Dr, Parkview",
   category: animals,
   capacity: 4,
   requirement: "You will need to have some experience working with animals.",
+  active: true,
   user: user2
   )
 animal_project.remote_photo_url = url_animal
@@ -134,9 +147,11 @@ volunteer_project = Project.new(
   to join us and help us out - with your help we can change the world! You will be staying in our home and helping us out - don't worry! We will
   provide all of your food and drink.",
   location: "Paddington, London",
+  address: "3 Abbey Rd, London NW8 9AY",
   category: other,
   capacity: 4,
   requirement: "No experience needed- just enthusiasm!",
+  active: false,
   user: user3
   )
 volunteer_project.remote_photo_url = url_volunteer
@@ -149,9 +164,11 @@ school_project = Project.new(
   to join us and help us out - with your help we can change the world! You will be staying in our home and helping us out - don't worry! We will
   provide all of your food and drink.",
   location: "Bath, Somerset",
+  address: "North Road, Bath BA2 6HU",
   category: education,
   capacity: 4,
   requirement: "You will need to have some teaching experience",
+  active: true,
   user: user3
   )
 school_project.remote_photo_url = url_school
@@ -164,9 +181,11 @@ giraffe_project = Project.new(
   to join us and help us out - with your help we can change the world! You will be staying in our home and helping us out - don't worry! We will
   provide all of your food and drink.",
   location: "Kenya",
+  address: "Gogo Falls Road, Nairobi",
   category: animals,
   capacity: 4,
   requirement: "No experience needed- just enthusiasm!",
+  active: true,
   user: user1
   )
 giraffe_project.remote_photo_url = url_giraffe
@@ -179,9 +198,11 @@ health_project = Project.new(
   to join us and help us out - with your help we can change the world! You will be staying in our home and helping us out - don't worry! We will
   provide all of your food and drink.",
   location: "Leeds",
+  address: "Great George St, Leeds",
   category: health,
   capacity: 4,
   requirement: "Some medical experience is required",
+  active: false,
   user: user1
   )
 health_project.remote_photo_url = url_health
@@ -194,15 +215,19 @@ allotment_project = Project.new(
   to join us and help us out - with your help we can change the world! You will be staying in our home and helping us out - don't worry! We will
   provide all of your food and drink.",
   location: "Epsom",
+  address: "Heron Court, Alexandra Road",
   category: environment,
   capacity: 4,
   requirement: "No experience needed",
+  active: true,
   user: user3
   )
 allotment_project.remote_photo_url = url_allotment
 allotment_project.save
 
 # BOOKINGS
+
+puts "Seeding bookings..."
 
 booking1 = Booking.new(
   start_date: "15 Aug 2018",
