@@ -5,7 +5,7 @@ Rails.application.routes.draw do
     resources :bookings, only: [ :create ]
   end
   get 'my-projects', to: 'profiles#projects'
-  get 'my-projects/:id', to: 'profiles#project_details'
+  get 'my-projects/:id', to: 'profiles#project_details', as: 'my-project'
   get 'profiles/:id', to: 'profiles#show', as: :profile
   resources :bookings, only: [ :index, :show, :destroy ]
 end
