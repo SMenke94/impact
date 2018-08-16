@@ -3,7 +3,17 @@ class ProjectsController < ApplicationController
   before_action :find_project, only: [ :show, :edit, :update, :destroy ]
 
   def index
-    @projects = Project.where.not(latitude: nil, longitude: nil)
+    if params[:query].present? && params[:query] != ""
+      sql_query = " \
+        projects.title ILIKE :query \
+        OR projects.description ILIKE :query \
+        OR projects.location ILIKE :query \
+        OR categories.name ILIKE :query \
+      "
+      @projects = Project.joins(:category).where(sql_query, query: "%#{params[:query]}%")
+    else
+      @projects = Project.all
+    end
 
     @markers = @projects.map do |project|
       {

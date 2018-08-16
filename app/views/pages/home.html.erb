@@ -7,6 +7,15 @@
     <h2>
       <span id="banner-typed-text"></span>
     </h2>
-    <%= link_to "Change the world", projects_path, class: "btn btn-home"%>
+    <%= form_tag projects_path, method: :get, class: "form-inline", id: "home-input" do %>
+      <div class="form-group">
+        <%= text_field_tag :query,
+          params[:query],
+          class: "form-control input-lg search-input",
+          placeholder: "Find your next adventure"
+        %>
+        <%= submit_tag("Search", class: "btn btn-home") %>
+      </div>
+    <% end %>
   </div>
 </div>

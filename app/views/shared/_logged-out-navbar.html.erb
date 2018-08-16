@@ -1,9 +1,18 @@
 <div class="navbar-wagon">
   <!-- Logo -->
-  <div class="logo-div">
-    <a href="/projects" class="navbar-wagon-brand">
-      <%= image_tag "logo.png" %>
-    </a>
+  <div class="left-side">
+    <div class="logo-div">
+      <a href="/projects" class="navbar-wagon-brand">
+        <%= image_tag "logo.png" %>
+      </a>
+    </div>
+    <%= form_tag projects_path, method: :get do %>
+      <%= text_field_tag :query,
+        params[:query],
+        class: "form-control search-input",
+        placeholder: "Find a project"
+      %>
+    <% end %>
   </div>
 
   <!-- Right Navigation -->
