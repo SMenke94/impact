@@ -5,6 +5,11 @@ class BookingsController < ApplicationController
 
   def show
     @booking = current_user.bookings.find(params[:id])
+    @markers = [{
+      lat: @booking.project.latitude,
+      lng: @booking.project.longitude,
+      icon: ActionController::Base.helpers.asset_path("#{@booking.project.category.name.downcase}.png")
+    }]
   end
 
   def create
