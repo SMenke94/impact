@@ -21,11 +21,16 @@ class User < ApplicationRecord
     hosts = bookings.map { |booking| booking.project.user  }
     projects = self.projects
     signups = projects.map { |project| project.bookings }
-    volunteers = signups.map do |booking|
+    volunteers = []
+    signups.map do |booking|
       if booking.is_a? Booking
-        booking.user
+        volunteers << booking.user
       else
-        booking.length > 0 ? booking[0].user : nil
+        if booking.length > 0
+          booking.each { |booking| volunteers << booking.user }
+        else
+          nil
+        end
       end
     end
 

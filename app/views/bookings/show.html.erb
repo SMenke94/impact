@@ -27,26 +27,26 @@
         <div class="card-bottom-border">
           <p><strong>Your fellow volunteers</strong></p>
           <% @booking.all_volunteers.each do |volunteer| %>
-            <% if volunteer != current_user %>
-              <div class="volunteer-info">
-                <%= link_to profile_path(volunteer) do %>
-                  <%= cl_image_tag volunteer.profile_picture.url(:avatar),
-                  class: "avatar", width: "50px" %>
-                <% end %>
-                <span><%= volunteer.first_name %> <%= volunteer.last_name %></span>
-                <span><%= volunteer.email %></span>
-                <% volunteer.bookings.each do |booking| %>
-                  <% if (booking.all_dates).overlaps?(@booking.all_dates) &&
-                         booking.project == @booking.project %>
-                    <span><%= booking.start_date.strftime("%a, %b %d, %Y") %> - <br> <%= booking.end_date.strftime("%a, %b %d, %Y") %></span>
-                  <% end %>
-                <% end %>
-              </div>
+          <% if volunteer != current_user %>
+          <div class="volunteer-info">
+            <%= link_to profile_path(volunteer) do %>
+            <%= cl_image_tag volunteer.profile_picture.url(:avatar),
+            class: "avatar", width: "50px" %>
             <% end %>
-          <% end %>
-        </div>
+            <span><%= volunteer.first_name %> <%= volunteer.last_name %></span>
+            <span><%= volunteer.email %></span>
+            <% volunteer.bookings.each do |booking| %>
+            <% if (booking.all_dates).overlaps?(@booking.all_dates) &&
+             booking.project == @booking.project %>
+             <span><%= booking.start_date.strftime("%a, %b %d, %Y") %> - <br> <%= booking.end_date.strftime("%a, %b %d, %Y") %></span>
+             <% end %>
+             <% end %>
+           </div>
+           <% end %>
+           <% end %>
+         </div>
 
-        <div class="card-margin">
+         <div class="card-margin">
           <%= link_to "View project", project_path(@booking.project) %>
         </div>
       </div>
@@ -61,8 +61,8 @@
       <div class="card-dashboard-frame card-dashboard-details background-white">
         <h3>Your host!</h3>
         <%= link_to profile_path(@booking.project.user) do %>
-          <%= cl_image_tag @booking.project.user.profile_picture.url(:avatar),
-          class: "avatar picture-margin", width: "100px" %>
+        <%= cl_image_tag @booking.project.user.profile_picture.url(:avatar),
+        class: "avatar picture-margin", width: "100px" %>
         <% end %>
         <h4><%= @booking.project.user.first_name %> <%= @booking.project.user.last_name %></h4>
         <p><i class="fas fa-phone"></i> <%= @booking.project.user.phone %></p>
@@ -71,4 +71,5 @@
       </div>
     </div>
   </div>
+</div>
 
