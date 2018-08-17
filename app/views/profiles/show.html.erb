@@ -45,8 +45,18 @@
     <!-- Add reviews to model and implement logic -->
     <div class="card-profile reviews-section">
       <div class="card-content">
-        <h3>Reviews (0)</h3>
-        <!-- @user.reviews.each do |review| render ... -->
+        <h3>Reviews (<%= @user.reviews.length %>)</h3>
+        <div id="reviews-content">
+          <% @user.reviews.each do |review| %>
+            <div id="reviews">
+              <%= link_to profile_path(review.author) do %>
+                <%= cl_image_tag review.author.profile_picture.url(:avatar),
+                class: "avatar", width: "50px" %>
+              <% end %>
+              <p><%= review.content %></p>
+            </div>
+          <% end %>
+        </div>
       </div>
     </div>
 
