@@ -24,7 +24,7 @@
 
     <div class="card-profile experience-section">
       <div class="card-content">
-        <h3>Experience (<%= @user.bookings.count{|booking| booking.start_date <= Date.today} %>)</h3>
+        <h3>Volunteering Experience (<%= @user.bookings.count{|booking| booking.start_date <= Date.today} %>)</h3>
         <% @categories.order(:name).each do |category| %>
         <%= render 'shared/profile-experience', category: category, user: @user %>
         <% end %>
