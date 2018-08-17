@@ -1,5 +1,6 @@
 puts "Destroying old records..."
 
+Review.destroy_all
 Booking.destroy_all
 Project.destroy_all
 User.destroy_all
@@ -42,7 +43,10 @@ user1 = User.new(
   job_title: "Web Developer",
   location: "Copenhagen, Denmark",
   email: "cathy@gmail.com",
-  password: "123456"
+  password: "123456",
+  bio: "Hey, I'm 24 years old and living my best life in Copenhagen!
+  I am on the lookout for adventures where I can use my technical skills to help people. I also
+  run a few projects myself - check them out!"
   )
 user1.remote_profile_picture_url = url_user1
 user1.save
@@ -54,7 +58,10 @@ user2 = User.new(
   job_title: "Nurse",
   location: "Paris, France",
   email: "jessica@gmail.com",
-  password: "123456"
+  password: "123456",
+  bio: "Hey, thanks for taking a look at my profile! I'm 29 years old and have a medical background
+  so I like to volunteer my time on health projects. If you are also looking to volunteer, check out
+  my projects below."
   )
 user2.remote_profile_picture_url = url_user2
 user2.save
@@ -66,7 +73,10 @@ user3 = User.new(
   job_title: "High School Teacher",
   location: "London, England",
   email: "john@gmail.com",
-  password: "123456"
+  password: "123456",
+  bio: "Yo yo yo - Johnno here. I'm just your classic lads lad who lives for the bant. Like most
+  top geezers my age, I'm really in to Latin teaching and gardening - if you're interested, check
+  out my projects below!"
   )
 user3.remote_profile_picture_url = url_user3
 user3.save

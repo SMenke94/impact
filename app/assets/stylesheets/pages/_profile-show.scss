@@ -2,7 +2,7 @@
 .profile {
   display: grid;
   grid-template-columns: 370px 1fr;
-  grid-template-rows: 320px 200px 2fr 2fr;
+  grid-template-rows: 200px 320px 2fr 2fr;
   height: 230vh;
   padding: 30px;
   h3 {
@@ -60,6 +60,11 @@
 #reviews-content {
   margin-top: 20px;
   height: 100%;
+}
+
+ul {
+  list-style: none !important;
+  padding-left: 0 !important;
 }
 
 
