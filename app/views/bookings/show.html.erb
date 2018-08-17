@@ -50,6 +50,10 @@
           <%= link_to "View project", project_path(@booking.project) %>
         </div>
       </div>
+      <div class="card-dashboard-frame background-white" id="write-review">
+        <h4>Write a review for <%= @booking.project.user.first_name %></h4>
+        <%= link_to "Write a review", new_review_path(@booking.project.user), class: "btn btn-action" %>
+      </div>
     </div>
 
     <!-- Right side of booking show page -->
@@ -67,4 +71,4 @@
       </div>
     </div>
   </div>
-</div>
+

@@ -9,8 +9,9 @@
         <% end %>
         <h4><%= @user.job_title %></h4>
         <h4><%= @user.location %></h4>
-        <p><strong>Languages:</strong> English, French</p>
-        <p><strong>Other:</strong> some cool skill</p>
+        <% if current_user != @user %>
+          <%= link_to "Write a review", new_review_path(@user), class: "btn btn-action" %>
+        <% end %>
       </div>
     </div>
 
@@ -18,7 +19,6 @@
       <div class="card-content">
         <h2>Hey, I'm <%= @user.first_name %> <%= @user.last_name %></h2>
         <p class="text-justify"><%= @user.bio %></p>
-        <p class="text-justify">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et e</p>
       </div>
     </div>
 
@@ -45,8 +45,18 @@
     <!-- Add reviews to model and implement logic -->
     <div class="card-profile reviews-section">
       <div class="card-content">
-        <h3>Reviews (0)</h3>
-        <!-- @user.reviews.each do |review| render ... -->
+        <h3>Reviews (<%= @user.reviews.length %>)</h3>
+        <div id="reviews-content">
+          <% @user.reviews.each do |review| %>
+            <div id="reviews">
+              <%= link_to profile_path(review.author) do %>
+                <%= cl_image_tag review.author.profile_picture.url(:avatar),
+                class: "avatar", width: "50px" %>
+              <% end %>
+              <p><%= review.content %></p>
+            </div>
+          <% end %>
+        </div>
       </div>
     </div>
 

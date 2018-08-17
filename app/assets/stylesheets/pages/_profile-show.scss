@@ -2,7 +2,8 @@
 .profile {
   display: grid;
   grid-template-columns: 370px 1fr;
-  grid-template-rows: 320px 200px 1fr 200px;
+  grid-template-rows: 200px 320px 2fr 2fr;
+  height: 230vh;
   padding: 30px;
   h3 {
     margin: 0;
@@ -29,7 +30,6 @@
 .projects-section {
   grid-row: 3 / span 1;
   grid-column: 1 / span 2;
-  height: 55vh;
   padding: 20px;
   margin-bottom: 10px;
 }
@@ -42,6 +42,29 @@
 .reviews-section {
   grid-row: 4 / span 1;
   grid-column: 1 / span 2;
+}
+
+#reviews {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin: 10px 10%;
+  width: 80%;
+  padding: 5px;
+  border-bottom: 1px solid rgba(0,0,0,0.2);
+  p {
+    margin-left: 30px;
+  }
+}
+
+#reviews-content {
+  margin-top: 20px;
+  height: 100%;
+}
+
+ul {
+  list-style: none !important;
+  padding-left: 0 !important;
 }
 
 
