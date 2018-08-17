@@ -22,7 +22,9 @@
     <% if current_user.projects.length > 0 %>
       <%= link_to "My Projects", my_projects_path, class: "navbar-wagon-item navbar-wagon-link" %>
     <% end %>
-    <%= link_to "My Bookings", bookings_path, class: "navbar-wagon-item navbar-wagon-link" %>
+    <% if current_user.bookings.length > 0 %>
+      <%= link_to "My Bookings", bookings_path, class: "navbar-wagon-item navbar-wagon-link" %>
+    <% end %>
     <%= link_to "Logout", destroy_user_session_path, method: :delete, class: "navbar-wagon-item navbar-wagon-link" %>
     <%= link_to profile_path(current_user) do %>
       <%= cl_image_tag current_user.profile_picture.url(:avatar), class: "avatar" %>
