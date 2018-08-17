@@ -31,11 +31,11 @@
   background-color: rgba(135,187,162,0.4);
 }
 .projects-section {
-  grid-row: 3 / span 1;
+  grid-row: 4 / span 1;
   grid-column: 1 / span 2;
   padding: 20px;
   margin-bottom: 10px;
-  background-color: rgba(252,159,91,0.6);
+  background-color: rgba(51,202,127, 0.4);
 }
 .projects-display {
   display: flex;
@@ -44,9 +44,9 @@
   min-width: 100%;
 }
 .reviews-section {
-  grid-row: 4 / span 1;
+  grid-row: 3 / span 1;
   grid-column: 1 / span 2;
-  background-color: rgba(51,202,127, 0.4);
+  background-color: rgba(252,159,91,0.6);
 }
 
 #reviews {
