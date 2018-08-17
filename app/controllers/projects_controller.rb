@@ -82,6 +82,6 @@ end
   end
 
   def project_params
-    params.require(:project).permit(:title, :description, :location, :category_id, :capacity, :requirement, :photo, :full_description)
+    params.require(:project).permit(:title, :description, :location, :category_id, :capacity, :requirement, :photo, :full_description, :address)
   end
 end
