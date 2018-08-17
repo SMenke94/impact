@@ -15,4 +15,20 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+
+  def relationship(user)
+    bookings = self.bookings
+    hosts = bookings.map { |booking| booking.project.user  }
+    projects = self.projects
+    signups = projects.map { |project| project.bookings }
+    volunteers = signups.map do |booking|
+      if booking.is_a? Booking
+        booking.user
+      else
+        booking.length > 0 ? booking[0].user : nil
+      end
+    end
+
+    return hosts.include?(user) || volunteers.include?(user)
+  end
 end

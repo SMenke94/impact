@@ -9,7 +9,7 @@
         <% end %>
         <h4><%= @user.job_title %></h4>
         <h4><%= @user.location %></h4>
-        <% if current_user != @user %>
+        <% if current_user.relationship(@user) %>
           <%= link_to "Write a review", new_review_path(@user), class: "btn btn-action" %>
         <% end %>
       </div>
